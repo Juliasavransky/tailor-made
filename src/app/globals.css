@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&family=Kelly+Slab:wght@400&display=swap');
+
+/* Tailor's Landing Page Design System - African-inspired modern elegance */
+
+@layer base {
+  :root {
+    --font-nunito: 'Nunito', sans-serif;
+    --font-kelly-slab: 'Kelly Slab', serif;
+    /* Core brand colors from African textile inspiration */
+    --background: 0 0% 99%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Primary: Deep Blue (#01356D) */
+    --primary: 207 97% 21%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 207 97% 35%;
+    --primary-lighter: 207 97% 85%;
+
+    /* Secondary: Golden Yellow (#FDC24B) */
+    --secondary: 44 97% 63%;
+    --secondary-foreground: 0 0% 10%;
+    --secondary-light: 44 97% 75%;
+    --secondary-lighter: 44 97% 90%;
+
+    /* Accent: Deep Red (#AE082F)  */
+    --accent: 346 93% 36%;
+    --accent-foreground: 0 0% 98%;
+    --accent-light: 346 93% 50%;
+    --accent-lighter: 346 93% 85%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 95%;
+    --ring: 207 97% 21%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+}
