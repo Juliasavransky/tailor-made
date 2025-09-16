@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "src": "/images/products-1.jpg",
+    "title": "Handmade Bags Collection",
+    "description": "Beautiful African-inspired bags with geometric patterns",
+    "category": "Accessories",
+    "alt": "African-inspired handmade bags with geometric textile patterns"
+  },
+  {
+    "id": 2,
+    "src": "/images/products-2.jpg",
+    "title": "Custom Tailoring",
+    "description": "Elegant custom garments with traditional patterns",
+    "category": "Tailoring",
+    "alt": "Tailored garment on mannequin with bold patterned fabric"
+  },
+  {
+    "id": 3,
+    "src": "/images/products-3.jpg",
+    "title": "Jewelry & Accessories",
+    "description": "Unique handcrafted jewelry and fashion accessories",
+    "category": "Accessories",
+    "alt": "Handcrafted jewelry and accessories arranged on display"
+  }
+]
