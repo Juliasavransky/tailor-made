@@ -27,14 +27,14 @@ const simpleMapUrl = `https://maps.google.com/maps?q=${encodedAddress}&t=&z=15&i
       
       {/* כפתור לפתיחה בגוגל מפות */}
       <div className="mt-4 text-center">
-        <a
-          href={`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`}
+        <button
+          onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank')}
+          className="btn-hero w-full bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95 group mt-auto"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200"
         >
           Open in Google Maps
-        </a>
+        </button>
       </div>
     </div>
   );
