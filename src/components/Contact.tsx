@@ -1,7 +1,7 @@
 'use client';
 import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from 'lucide-react';
-import GoogleMapsEmbed from './GoogleMapsEmbed';
-import ContactForm from '../components/ContactForm';
+import GoogleMapsEmbed from '@/components/GoogleMapsEmbed';
+import ContactForm from '@/components/ContactForm';
 
 const Contact = () => {
   return (
@@ -18,9 +18,10 @@ const Contact = () => {
         linear-gradient(-45deg, transparent 75%, hsl(var(--secondary) / 0.1) 75%);
         background-size: 30px 30px;
         background-position: 0 0, 0 15px, 15px -15px, -15px 0px; opacity-5'
-      ></div>
+      />
 
       <div className='container mx-auto relative z-10'>
+        {/* Header */}
         <div className='text-center mb-16'>
           <div className='flex items-center justify-center mb-6'>
             <Mail className='text-primary mr-3' size={28} />
@@ -42,74 +43,79 @@ const Contact = () => {
           </p>
         </div>
 
+        {/* Grid */}
         <div className='grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch'>
-          {/* Contact Form */}
-          <ContactForm />
+          {/* Left: Form card */}
+          <div className='animate-slide-in-left'>
+            <ContactForm />
+          </div>
 
-          {/* Contact Info */}
-          <div className='animate-slide-in-right slideInRight 0.8s ease-out forwards space-y-8 h-full flex flex-col'>
-            <div className='flex items-start space-x-4'>
-              <div className='bg-primary/10 p-4 rounded-2xl'>
-                <MapPin className='text-primary' size={24} />
-              </div>
-              <div>
-                <h4 className='text-xl font-semibold text-foreground mb-2'>
-                  Visit Our Studio
-                </h4>
-                <p className='text-muted-foreground'>
-                  3, Rue Fernand Raynaud
-                  <br />
-                  63360 Gerzat
-                </p>
-              </div>
-            </div>
+          {/* Right: Info card (זהה בסטייל לקארד של הטופס) */}
+          <div className='animate-slide-in-right'>
+            <div className='card-elegant bg-card rounded-2xl p-8 shadow-lg hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-2 border border-border/50 h-full flex flex-col'>
+              {/* בלוקים עליונים */}
+              <div className='space-y-8'>
+                {/* Location */}
+                <div className='flex items-start gap-4'>
+                  <div className='bg-primary/10 p-4 rounded-2xl'>
+                    <MapPin className='text-primary' size={24} />
+                  </div>
+                  <div>
+                    <h4 className='text-xl font-semibold text-foreground mb-2'>
+                      Visit Our Studio
+                    </h4>
+                    <p className='text-muted-foreground'>
+                      3, Rue Fernand Raynaud
+                      <br />
+                      63360 Gerzat
+                    </p>
+                  </div>
+                </div>
 
-            <div className='flex items-start space-x-4'>
-              <div className='bg-secondary/10 p-4 rounded-2xl'>
-                <Phone className='text-secondary' size={24} />
-              </div>
-              <div>
-                <h4 className='text-xl font-semibold text-foreground mb-2'>
-                  Call Us
-                </h4>
-                <p className='text-muted-foreground'>
-                  <a
-                    href='tel:+33659149899'
-                    className='hover:text-secondary transition-colors'
-                  >
-                    06 59 14 98 99
-                  </a>
-                </p>
-              </div>
-            </div>
+                {/* Phone */}
+                <div className='flex items-start gap-4'>
+                  <div className='bg-secondary/10 p-4 rounded-2xl'>
+                    <Phone className='text-secondary' size={24} />
+                  </div>
+                  <div>
+                    <h4 className='text-xl font-semibold text-foreground mb-2'>
+                      Call Us
+                    </h4>
+                    <p className='text-muted-foreground'>
+                      <a
+                        href='tel:+33659149899'
+                        className='hover:text-secondary transition-colors'
+                      >
+                        06 59 14 98 99
+                      </a>
+                    </p>
+                  </div>
+                </div>
 
-            <div className='flex items-start space-x-4'>
-              <div className='bg-accent/10 p-4 rounded-2xl'>
-                <Clock className='text-accent' size={24} />
+                {/* Hours */}
+                <div className='flex items-start gap-4 pb-6'>
+                  <div className='bg-accent/10 p-4 rounded-2xl'>
+                    <Clock className='text-accent' size={24} />
+                  </div>
+                  <div>
+                    <h4 className='text-xl font-semibold text-foreground mb-2'>
+                      Working Hours
+                    </h4>
+                    <p className='text-muted-foreground'>Mardi – Samedi:</p>
+                    <p className='text-muted-foreground'>
+                      10:00–12:30, 14:00–18:30
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h4 className='text-xl font-semibold text-foreground mb-2'>
-                  Working Hours
-                </h4>
-                <p className='text-muted-foreground'>
-                  Mardi – Samedi: 10:00–12:30, 14:00–18:30
-                </p>
-              </div>
-            </div>
 
-            <div className='bg-muted/30 rounded-3xl p-8 text-center mt-auto'>
-              <MapPin
-                className='mx-auto text-muted-foreground mb-4'
-                size={48}
-              />
-              <h3 className='text-muted-foreground'>
-                Find us easily with GPS coordinates and detailed directions to
-                our studio location.
-              </h3>
-              <GoogleMapsEmbed />
+              {/* אזור תחתון – מיושר לתחתית כמו הכפתור של הטופס */}
+              <div className='mt-auto space-y-6'>
+                <GoogleMapsEmbed />
+              </div>
             </div>
           </div>
-          <div className='flex items-center space-x-4 pt-6'>
+          <div className='flex items-center gap-4'>
             <span className='text-foreground font-semibold'>Follow us:</span>
             <a
               href='#'
