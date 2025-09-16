@@ -10,7 +10,7 @@ const ContactForm = () => {
 
       <form onSubmit={handleSubmit} className="space-y-6 flex flex-col ">
         <div>
-          <label htmlFor="name" className="block font-semibold text-foreground mb-2 text-xl">
+          <label htmlFor="name" className="text-start block font-semibold text-foreground mb-2 text-xl">
             Full Name
           </label>
           <input
@@ -26,7 +26,7 @@ const ContactForm = () => {
         </div>
 
         <div>
-          <label htmlFor="email" className="block text-xl font-semibold text-foreground mb-2">
+          <label htmlFor="email" className="text-start block text-xl font-semibold text-foreground mb-2">
             Email Address
           </label>
           <input
@@ -42,7 +42,7 @@ const ContactForm = () => {
         </div>
 
         <div className="flex-grow">
-          <label htmlFor="message" className="block text-xl font-semibold text-foreground mb-2">
+          <label htmlFor="message" className="text-start block text-xl font-semibold text-foreground mb-2">
             Message
           </label>
           <textarea

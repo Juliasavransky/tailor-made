@@ -29,11 +29,11 @@ const Footer = () => {
       <div className="relative z-10">
         {/* Main Footer Content */}
         <div className="container mx-auto px-4 lg:px-8 py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-start">
             {/* Brand */}
-            <div className="lg:col-span-2">
-              <h3 className="text-3xl font-bold text-secondary mb-4">Tailor Studio</h3>
-              <p className="text-primary-foreground/80 text-lg leading-relaxed mb-6 max-w-md">
+            <div className="lg:col-span-2 flex flex-col items-start">
+              <h3 className="text-3xl  font-bold text-secondary mb-4">Tailor Studio</h3>
+              <p className=" text-primary-foreground/80 text-lg leading-relaxed mb-6 max-w-md">
                 Professional tailoring with soul. Creating handmade products and custom garments 
                 where every stitch tells a story of craftsmanship and creativity.
               </p>

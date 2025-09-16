@@ -54,14 +54,14 @@ const Contact = () => {
           <div className='animate-slide-in-right'>
             <div className='card-elegant bg-card rounded-2xl p-8 shadow-lg hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-2 border border-border/50 h-full flex flex-col'>
               {/* בלוקים עליונים */}
-              <div className='space-y-8'>
+              <div className='space-y-8 text-start'>
                 {/* Location */}
-                <div className='flex items-start gap-4'>
+                <div className='flex items-start gap-10'>
                   <div className='bg-primary/10 p-4 rounded-2xl'>
                     <MapPin className='text-primary' size={24} />
                   </div>
                   <div>
-                    <h4 className='text-xl font-semibold text-foreground mb-2'>
+                    <h4 className='text-xl  font-semibold text-foreground mb-2'>
                       Visit Our Studio
                     </h4>
                     <p className='text-muted-foreground'>
@@ -73,7 +73,7 @@ const Contact = () => {
                 </div>
 
                 {/* Phone */}
-                <div className='flex items-start gap-4'>
+                <div className='flex items-start gap-10'>
                   <div className='bg-secondary/10 p-4 rounded-2xl'>
                     <Phone className='text-secondary' size={24} />
                   </div>
@@ -93,7 +93,7 @@ const Contact = () => {
                 </div>
 
                 {/* Hours */}
-                <div className='flex items-start gap-4 pb-6'>
+                <div className='flex items-start gap-10 pb-6'>
                   <div className='bg-accent/10 p-4 rounded-2xl'>
                     <Clock className='text-accent' size={24} />
                   </div>

@@ -26,7 +26,7 @@ const Hero = () => {
    
 
       {/* Content */}
-      <div className="relative z-20 text-center px-4 md:px-8 max-w-4xl mx-auto bg-background/30 rounded-lg py-10 backdrop-blur-md shadow-[var(--shadow-elegant)]">
+      <div className="relative z-20 text-center px-4 md:px-8 max-w-4xl mx-auto  bg-background/30 rounded-lg py-10 backdrop-blur-md shadow-[var(--shadow-elegant)] ">
         <div className="animate-fade-in-up fadeInUp 0.8s ease-out forwards">
           <div className="flex items-center justify-center mb-6">
             <Sparkles className="text-secondary mr-3 animate-pulse-slow" size={32} />
