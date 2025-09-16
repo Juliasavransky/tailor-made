@@ -56,7 +56,7 @@ const Contact = () => {
         <div className='text-center mb-16'>
           <div className='flex items-center justify-center mb-6'>
             <Mail className='text-primary mr-3' size={28} />
-            <span className='text-primary font-semibold text-lg'>
+            <span className='text-primary font-semibold text-2xl'>
               Get In Touch
             </span>
           </div>

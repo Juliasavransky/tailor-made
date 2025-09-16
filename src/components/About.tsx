@@ -19,7 +19,9 @@ const About = () => {
         <div className='text-center mb-16'>
           <div className='flex items-center justify-center mb-6'>
             <Heart className='text-accent mr-3' size={28} />
-            <span className='text-accent font-semibold text-lg'>Our Story</span>
+            <span className='text-accent font-semibold text-2xl'>
+              Our Story
+            </span>
           </div>
 
           <h2 className='text-4xl md:text-6xl font-bold text-foreground mb-8'>
@@ -34,23 +36,20 @@ const About = () => {
           {/* Content */}
           <div className='animate-slide-in-left slideInLeft 0.8s ease-out forwards'>
             <p className='text-lg md:text-xl text-muted-foreground leading-relaxed mb-8'>
-               <span className='text-accent font-semibold'>Grace Couture </span>
-               
-              offre une large gamme de services pour répondre à
-              tous vos besoins en matière de couture et de retouches. Que vous
-              ayez besoin de raccourcir un pantalon, de réparer une fermeture
-              éclair ou de personnaliser un vêtement avec une broderie, notre
-              atelier est là pour vous aider. Nous prenons soin de chaque
-              détail, qu'il s'agisse de transformations mineures comme un ourlet
-              invisible ou de projets plus complexes tels que la confection de
-              rideaux sur mesure. Notre expertise inclut également les vêtements
-              en cuir, les doublures, et les customisations. Chez Grace Couture,
-              chaque projet est réalisé avec soin et précision pour garantir
-              votre satisfaction. Cette description a été générée
-              automatiquement et peut comporter des erreurs, pour la modifier ou
-              la supprimer, cliquez ici.
-
-
+              <span className='text-accent font-semibold'>Grace Couture </span>
+              offre une large gamme de services pour répondre à tous vos besoins
+              en matière de couture et de retouches. Que vous ayez besoin de
+              raccourcir un pantalon, de réparer une fermeture éclair ou de
+              personnaliser un vêtement avec une broderie, notre atelier est là
+              pour vous aider. Nous prenons soin de chaque détail, qu'il
+              s'agisse de transformations mineures comme un ourlet invisible ou
+              de projets plus complexes tels que la confection de rideaux sur
+              mesure. Notre expertise inclut également les vêtements en cuir,
+              les doublures, et les customisations. Chez Grace Couture, chaque
+              projet est réalisé avec soin et précision pour garantir votre
+              satisfaction. Cette description a été générée automatiquement et
+              peut comporter des erreurs, pour la modifier ou la supprimer,
+              cliquez ici.
               <span className='text-primary font-semibold'>
                 {' '}
                 professionalism
@@ -59,11 +58,6 @@ const About = () => {
               and
               <span className='text-accent font-semibold'> creativity</span>.
             </p>
-
-            {/* <p className='text-lg md:text-xl text-muted-foreground leading-relaxed mb-8'>
-              Discover handmade products and custom tailoring services where
-              every stitch is crafted with care and precision.
-            </p> */}
 
             <div className='grid sm:grid-cols-2 gap-6'>
               <div className='flex items-start space-x-4'>
@@ -100,7 +94,7 @@ const About = () => {
           <div className='animate-slide-in-right slideInRight 0.8s ease-out forwards'>
             <div className='relative'>
               <div className='bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl p-8 backdrop-blur-sm'>
-                <div className='text-center'>
+                <div className='text-center flex flex-col items-center'>
                   <div className='inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-full mb-6'>
                     <Heart className='text-white' size={32} />
                   </div>
@@ -113,6 +107,12 @@ const About = () => {
                     Every piece is crafted with attention to detail, ensuring
                     durability, comfort, and style that exceeds expectations.
                   </p>
+                  <img
+                    src='/images/grace logo icon.png'
+                    alt='logo'
+                    sizes='(max-width: 768px) 100vw, 1024px'
+                    className='object-cover '
+                  />
                 </div>
               </div>
 

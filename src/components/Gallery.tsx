@@ -91,7 +91,7 @@ export default function Gallery() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
             <Eye className="text-secondary mr-3" size={28} aria-hidden />
-            <span className="text-secondary font-semibold text-lg">Our Work</span>
+            <span className="text-secondary font-semibold text-2xl">Our Work</span>
           </div>
 
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8">
@@ -120,7 +120,7 @@ export default function Gallery() {
                   role="option"
                   aria-selected={i === index}
                 >
-                  <div className="relative w-full h-[400px] md:h-[600px]">
+                  <div className="relative  items-center w-full h-[400px] md:h-[600px]">
                     <Image
                       src={item.src}
                       alt={item.alt ?? item.title}
@@ -133,7 +133,7 @@ export default function Gallery() {
 
                   <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                  <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <div className="absolute flex flex-col m-auto rounded-t-3xl items-center w-fit bg-background/10 backdrop-blur-md bottom-0 left-0 right-0 p-8 text-white">
                     <span className="inline-block bg-secondary/90 text-secondary-foreground px-3 py-1 rounded-full text-sm font-semibold mb-3">
                       {item.category}
                     </span>
@@ -150,18 +150,18 @@ export default function Gallery() {
             type="button"
             onClick={prev}
             aria-label="Previous image"
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-3 bg-white/20 backdrop-blur-md text-white transition-all duration-300 hover:bg-white/30 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
+            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-3 bg-secondary/40 backdrop-blur-md text-secondary transition-all duration-300 hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
           >
-            <ChevronLeft size={24} aria-hidden />
+            <ChevronLeft size={30} aria-hidden />
           </button>
 
           <button
             type="button"
             onClick={next}
             aria-label="Next image"
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-3 bg-white/20 backdrop-blur-md text-white transition-all duration-300 hover:bg-white/30 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
+            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-3 bg-secondary/40 backdrop-blur-md text-secondary transition-all duration-300 hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
           >
-            <ChevronRight size={24} aria-hidden />
+            <ChevronRight size={30} aria-hidden />
           </button>
         </div>
 
@@ -194,7 +194,7 @@ export default function Gallery() {
 
         {/* CTA */}
         <div className="text-center">
-          <p className="text-lg text-muted-foreground mb-6">
+          <p className="text-2xl text-muted-foreground mb-6">
             Love what you see? Let&apos;s create something unique for you.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -208,7 +208,7 @@ export default function Gallery() {
             <button
               type="button"
               onClick={() => servicesRef.current?.scrollIntoView({ behavior: "smooth" })}
-              className="btn-outline border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-105 active:scale-95;
+              className="btn-outline border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-105 active:scale-95;
   }"
             >
               View All Services
