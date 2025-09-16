@@ -1,6 +1,8 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,20 +42,29 @@ const Header = () => {
       <nav className='container mx-auto'>
         <div className=' flex items-center justify-between h-24 lg:h-24'>
           {/* Logo */}
-          <div className='flex items-center h-24 will-change-[filter] transition-[filter] duration-300 hover:[filter:drop-shadow(0_0_2.5em_#AE082F)] '>
-            <img
-              src='/images/grace logo icon.png'
-              alt='logo'
-              sizes='(max-width: 768px) 100vw, 1024px'
-              className='object-cover w-24 px-2'
-            />
-            <img
-              src='/images/grace logo text.png'
-              alt='logo'
-              sizes='(max-width: 768px) 100vw, 1024px'
-              className='object-cover w-28'
-            />
-          </div>
+          <Link
+  href="/"
+  aria-label="חזרה לעמוד הבית"
+  className="group flex items-center h-24 will-change-[filter] transition-[filter] duration-300 hover:[filter:drop-shadow(0_0_2.5em_#AE082F)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-xl"
+>
+  <Image
+    src="/images/grace logo icon.png"
+    alt=""                 // דקורטיבי – כדי לא לקרוא פעמיים
+    width={96}
+    height={96}
+    className="object-cover w-24 px-2"
+    priority
+  />
+  <Image
+    src="/images/grace logo text.png"
+    alt="Grace"            // שם המותג
+    width={112}
+    height={96}
+    className="object-cover w-28"
+    priority
+  />
+  <span className="sr-only">חזרה לעמוד הבית</span>
+</Link>
 
           {/* Desktop Navigation */}
           <div className='hidden md:flex items-center space-x-8'>
