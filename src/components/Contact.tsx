@@ -118,13 +118,15 @@ const Contact = () => {
           <div className='flex items-center gap-4'>
             <span className='text-foreground font-semibold'>Follow us:</span>
             <a
-              href='#'
+              target='_blank'
+              href='https://www.facebook.com/profile.php?id=61573415275658&locale=fr_FR'
               className='bg-gradient-to-r from-pink-500 to-purple-600 text-white p-3 rounded-full hover:scale-110 transition-transform duration-300'
             >
               <Instagram size={20} />
             </a>
             <a
-              href='#'
+              target='_blank'
+              href='https://www.facebook.com/profile.php?id=61573415275658&locale=fr_FR'
               className='bg-blue-600 text-white p-3 rounded-full hover:scale-110 transition-transform duration-300'
             >
               <Facebook size={20} />

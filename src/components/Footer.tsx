@@ -1,6 +1,7 @@
 'use client';
 import { ArrowUp, Instagram, Facebook, Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
+import Modal from './Modal';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -47,20 +48,25 @@ const Footer = () => {
               </p>
               <div className='flex items-center space-x-4'>
                 <a
-                  href='#'
+                  target='_blank'
+                  href='https://www.facebook.com/profile.php?id=61573415275658&locale=fr_FR'
                   className='bg-gradient-to-r from-pink-500 to-purple-600 text-white p-3 rounded-full hover:scale-110 transition-transform duration-300'
                 >
                   <Instagram size={20} />
                 </a>
                 <a
-                  href='#'
+                  target='_blank'
+                  href='https://www.facebook.com/profile.php?id=61573415275658&locale=fr_FR'
                   className='bg-blue-600 text-white p-3 rounded-full hover:scale-110 transition-transform duration-300'
                 >
                   <Facebook size={20} />
                 </a>
                 <a
-                  href='mailto:gracecouture63360@gmail.com'
-                  className='bg-secondary text-secondary-foreground p-3 rounded-full hover:scale-110 transition-transform duration-300'
+                  target='_blank'
+                  href='https://mail.google.com/mail/?view=cm&fs=1&to=gracecouture63360@gmail.com&su=Demande depuis le site&body=Bonjour, je souhaiterais obtenir plus d’informations sur vos services de couture.'
+                  className='bg-secondary text-secondary-foreground p-3
+                  rounded-full hover:scale-110 transition-transform
+                  duration-300'
                 >
                   <Mail size={20} />
                 </a>
@@ -140,22 +146,25 @@ const Footer = () => {
           <div className='container mx-auto px-4 lg:px-8 py-6'>
             <div className='flex flex-col md:flex-row items-center justify-between'>
               <p className='text-primary-foreground/60 text-sm mb-4 md:mb-0'>
-                © {new Date().getFullYear()} All Rights Reserved – 
-                Grace Couture. Design & Development by Web_Witch {'  '}
+                © {new Date().getFullYear()} All Rights Reserved – Grace
+                Couture. Design & Development by Web_Witch Design studio{'  '}
                 <a
                   href='https://www.webwitch.click/en/home'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='text-white underline hover:text-blue-600 transition'
                 >
-                 <Image
-                  src='/svg/webWitchLogo yellow.svg'
-                  alt='Web Witch Logo'
-                  width={250}
-                  height={45}
-                  className='inline h-20 w-auto '/>
+                  <Image
+                    src='/svg/webWitchLogo yellow.svg'
+                    alt='Web Witch Logo'
+                    width={250}
+                    height={45}
+                    className='inline h-20 w-auto '
+                  />
                 </a>
               </p>
+               <Modal triggerLabel="Conditions d’utilisation" />                      
+              
 
               <button
                 onClick={scrollToTop}
