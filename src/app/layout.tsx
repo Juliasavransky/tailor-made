@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang='fr' data-theme='light' style={{ colorScheme: 'light' }}>
       <body
-        className={` ${nunito.variable} ${kellySlab.variable} antialiased max-w-[1440px] mx-auto p-8 text-center`}
+        className={` ${nunito.variable} ${kellySlab.variable} antialiased max-w-[1440px] mx-auto px-8 pt-8 text-center`}
       >
         <a
           href='#contenu'

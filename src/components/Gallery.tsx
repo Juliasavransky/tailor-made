@@ -64,6 +64,7 @@ const GALLERY: GalleryItem[] = galleryitems;
                     />
                   </div>
                   <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  
                   <div className="absolute flex flex-col m-auto rounded-t-3xl items-center w-fit bg-background/10 backdrop-blur-md bottom-0 left-0 right-0 p-8 text-white">
                     <span className="inline-block bg-secondary/90 text-secondary-foreground px-3 py-1 rounded-full text-sm font-semibold mb-3">
                       {item.category}

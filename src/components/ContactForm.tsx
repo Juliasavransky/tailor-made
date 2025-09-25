@@ -8,6 +8,7 @@ type FormValues = {
   name: string;
   email: string;
   message: string;
+  consent: boolean; // ✅ חדש: אישור GDPR
 };
 
 const ContactForm = () => {
@@ -17,6 +18,8 @@ const ContactForm = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    getValues,
+    setFocus,
   } = useForm<FormValues>({ mode: 'onTouched' });
 
   const [serverError, setServerError] = useState<string | null>(null);
@@ -26,16 +29,30 @@ const ContactForm = () => {
   // טיימר וכיוון לעמוד הבית
   useEffect(() => {
     if (!sent) return;
-    const tick = setInterval(
-      () => setSeconds((s) => (s > 0 ? s - 1 : 0)),
-      1000
-    );
+    const tick = setInterval(() => setSeconds((s) => (s > 0 ? s - 1 : 0)), 1000);
     const to = setTimeout(() => router.push('/'), 20000);
     return () => {
       clearInterval(tick);
       clearTimeout(to);
     };
   }, [sent, router]);
+
+  // שמירת ניסיונות לא-נשלחים (ללא אישור GDPR) ב-localStorage
+  const recordUnsent = (reason: string) => {
+    try {
+      const listKey = 'unsent-submissions';
+      const existing = JSON.parse(localStorage.getItem(listKey) || '[]');
+      const values = getValues();
+      const entry = {
+        reason,
+        values,
+        ts: new Date().toISOString(),
+      };
+      localStorage.setItem(listKey, JSON.stringify([entry, ...existing].slice(0, 50)));
+    } catch {
+      // ignore storage errors
+    }
+  };
 
   const onSubmit = async (data: FormValues) => {
     setServerError(null);
@@ -53,6 +70,14 @@ const ContactForm = () => {
       reset();
     } catch (err: any) {
       setServerError('שליחה נכשלה. נסי שוב מאוחר יותר.');
+    }
+  };
+
+  // טיפול במצב לא-תקין (למשל consent לא מסומן)
+  const onInvalid = () => {
+    if (errors.consent) {
+      recordUnsent('Consent not given (GDPR)');
+      setFocus('consent');
     }
   };
 
@@ -81,21 +106,16 @@ const ContactForm = () => {
 
   return (
     <div className='card-elegant bg-card rounded-2xl p-8 shadow-lg hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-2 border border-border/50 h-full flex flex-col'>
-      <h3 className='text-2xl font-bold text-foreground mb-6'>
-        Send us a Message
-      </h3>
+      <h3 className='text-2xl font-bold text-foreground mb-6'>Send us a Message</h3>
 
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit, onInvalid)}
         noValidate
         className='space-y-6 flex flex-col'
       >
         {/* Name */}
         <div>
-          <label
-            htmlFor='name'
-            className='text-start block font-semibold text-foreground mb-2 text-xl'
-          >
+          <label htmlFor='name' className='text-start block font-semibold text-foreground mb-2 text-xl'>
             Full Name
           </label>
           <input
@@ -108,7 +128,6 @@ const ContactForm = () => {
               minLength: { value: 2, message: 'לפחות 2 תווים' },
               maxLength: { value: 80, message: 'מקסימום 80 תווים' },
               pattern: {
-                // אותיות/רווחים/גרש/מקף — תומך גם בעברית (Unicode)
                 value: /^[\p{L}\s'.-]+$/u,
                 message: 'שם לא תקין',
               },
@@ -118,19 +137,12 @@ const ContactForm = () => {
             }`}
             placeholder='Your full name'
           />
-          {errors.name && (
-            <p role='alert' className='mt-2 text-sm text-destructive'>
-              {errors.name.message}
-            </p>
-          )}
+          {errors.name && <p role='alert' className='mt-2 text-sm text-destructive'>{errors.name.message}</p>}
         </div>
 
         {/* Email */}
         <div>
-          <label
-            htmlFor='email'
-            className='text-start block text-xl font-semibold text-foreground mb-2'
-          >
+          <label htmlFor='email' className='text-start block text-xl font-semibold text-foreground mb-2'>
             Email Address
           </label>
           <input
@@ -141,7 +153,6 @@ const ContactForm = () => {
             {...register('email', {
               required: 'שדה חובה',
               pattern: {
-                // RFC5322-ish פשוט
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: 'כתובת אימייל לא תקינה',
               },
@@ -152,19 +163,12 @@ const ContactForm = () => {
             }`}
             placeholder='your@email.com'
           />
-          {errors.email && (
-            <p role='alert' className='mt-2 text-sm text-destructive'>
-              {errors.email.message}
-            </p>
-          )}
+          {errors.email && <p role='alert' className='mt-2 text-sm text-destructive'>{errors.email.message}</p>}
         </div>
 
         {/* Message */}
         <div>
-          <label
-            htmlFor='message'
-            className='text-start block text-xl font-semibold text-foreground mb-2'
-          >
+          <label htmlFor='message' className='text-start block text-xl font-semibold text-foreground mb-2'>
             Message
           </label>
           <textarea
@@ -181,18 +185,45 @@ const ContactForm = () => {
             }`}
             placeholder='Tell us about your project or inquiry...'
           />
-          {errors.message && (
+          {errors.message && <p role='alert' className='mt-2 text-sm text-destructive'>{errors.message.message}</p>}
+        </div>
+
+        {/* GDPR Consent ✅ חובה */}
+        <div className='pt-2'>
+          <div className='flex items-start gap-3'>
+            <input
+              id='consent'
+              type='checkbox'
+              aria-invalid={!!errors.consent}
+              aria-describedby='consent-hint'
+              {...register('consent', {
+                required:
+                  'חובה לאשר את תנאי השליחה והפרטיות (GDPR) כדי לשלוח את ההודעה.',
+              })}
+              className={`mt-1 h-5 w-5 rounded border ${
+                errors.consent ? 'border-destructive ring-1 ring-destructive' : 'border-border'
+              }`}
+            />
+            <label htmlFor='consent' className='text-xs text-start leading-6 text-foreground'>
+              <span className='font-semibold'>Je consens</span> à l’envoi de ce message et à la
+              transmission de mes coordonnées conformément au <span className='font-semibold'>RGPD</span>.
+              <br />
+             
+              {/* אפשר להוסיף כאן קישור לפתיחת התקנון במודאל */}
+              {/* <button type="button" className="ml-2 underline" onClick={() => openModal()}>Lire les CGU</button> */}
+            </label>
+          </div>
+     
+          {errors.consent && (
             <p role='alert' className='mt-2 text-sm text-destructive'>
-              {errors.message.message}
+              {errors.consent.message}
             </p>
           )}
         </div>
 
         {/* Server error */}
         {serverError && (
-          <p role='alert' className='text-sm text-destructive -mt-2'>
-            {serverError}
-          </p>
+          <p role='alert' className='text-sm text-destructive -mt-2'>{serverError}</p>
         )}
 
         {/* Submit */}
@@ -209,10 +240,7 @@ const ContactForm = () => {
           ) : (
             <>
               Send Message
-              <Send
-                className='ml-4 group-hover:translate-x-1 transition-transform duration-300 inline'
-                size={20}
-              />
+              <Send className='ml-4 group-hover:translate-x-1 transition-transform duration-300 inline' size={20} />
             </>
           )}
         </button>
