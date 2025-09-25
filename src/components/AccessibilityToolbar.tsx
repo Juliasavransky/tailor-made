@@ -111,7 +111,7 @@ export default function AccessibilityFab() {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-5 text-white left-5 z-50 inline-flex items-center justify-center rounded-full shadow-lg border-2 bg-primary/95 backdrop-blur w-14 h-14 focus:outline-none focus-visible:ring transition"
+        className="fixed bottom-5 z-50 text-white left-5  inline-flex items-center justify-center rounded-full shadow-lg border-2 bg-primary/95 backdrop-blur w-14 h-14 focus:outline-none focus-visible:ring transition"
       >
         <Accessibility aria-hidden="true" />
         <span className="sr-only">{t.fabLabel}</span>
