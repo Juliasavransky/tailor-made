@@ -55,29 +55,29 @@ const Header = () => {
         isScrolled
           ? 'bg-background/80 backdrop-blur-md shadow-lg border-b border-border/20'
           : 'bg-background/35 backdrop-blur-md shadow-lg border-b border-border/0'
-      }`}
+      } ${isScrolled ? 'py-1' : 'py-3'} md:py-4`}
     >
       <nav className='container mx-auto'>
-        <div className='flex items-center justify-between h-24'>
+        <div className='flex items-center justify-between h-auto min-h-[60px]'>
           <Link
             href='/'
             aria-label='חזרה לעמוד הבית'
-            className='group flex items-center h-24 transition-[filter] duration-300 hover:[filter:drop-shadow(0_0_2.5em_#AE082F)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-xl'
+            className='group flex items-center transition-[filter] duration-300 hover:[filter:drop-shadow(0_0_2.5em_#AE082F)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-xl'
           >
             <Image
               src='/images/grace logo icon.png'
               alt=''
-              width={96}
-              height={96}
-              className='object-cover w-24 px-2'
+              width={isScrolled ? 64 : 96}
+              height={isScrolled ? 64 : 96}
+              className={`object-cover ${isScrolled ? 'w-16' : 'w-24'} px-2 transition-all duration-300`}
               priority
             />
             <Image
               src='/images/grace logo text.png'
               alt='Grace'
-              width={112}
-              height={96}
-              className='object-cover w-28'
+              width={isScrolled ? 96 : 112}
+              height={isScrolled ? 64 : 96}
+              className={`object-cover ${isScrolled ? 'w-24' : 'w-28'} transition-all duration-300`}
               priority
             />
             <span className='sr-only'>חזרה לעמוד הבית</span>
@@ -112,15 +112,15 @@ const Header = () => {
         </div>
 
         {isMobileMenuOpen && (
-          <div className='md:hidden absolute top-full align-auto left-0 right-0 max-h-[75vh]  overflow-y-auto bg-gradient-to-b from-white to-secondary-light -100/90 backdrop-blur-md border-b border-border/20 shadow-lg scroll-smooth'>
-            <div className='py-4 px-4 space-y-4 '>
+          <div className='md:hidden absolute top-full left-0 right-0 max-h-[75vh] overflow-y-auto bg-gradient-to-b from-white to-gray-100/90 backdrop-blur-md border-b border-border/20 shadow-lg scroll-smooth'>
+            <div className='py-4 px-4 space-y-4'>
               {navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className={`block w-full text-center transition-all duration-300 font-medium py-2 ${
+                  className={`block w-full text-left transition-all duration-300 font-medium py-2 ${
                     activeSection === item.href
-                      ? 'text-accent text-xl font-semibold border-b-2 border-dashed border-current border-(length: 2px)'
+                      ? 'text-primary text-lg font-semibold border-b-2 border-dashed border-current'
                       : 'text-foreground/80 hover:text-primary'
                   }`}
                 >
