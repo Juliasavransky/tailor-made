@@ -3,15 +3,20 @@ import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import CGU_GraceCouture from './WebsiteRegulations';
 
-type ModalProps = {
+interface ModalTriggerProps {
   triggerLabel?: string;      // טקסט לכפתור הפתיחה
   triggerClassName?: string;  // מחלקות עיצוב לכפתור
+}
+
+interface ModalTitleProps {
   title?: string;             // כותרת למודאל (ל-aria)
-};
+}
+
+type ModalProps = ModalTriggerProps & ModalTitleProps;
 
 export default function Modal({
   triggerLabel = "Conditions générales d’utilisation",
-  triggerClassName = "underline hover:opacity-80 focus-visible:ring rounded",
+  triggerClassName = "underline hover:opacity-80 focus:outline-none rounded",
   title = "Conditions Générales d’Utilisation – Grace Couture",
 }: ModalProps) {
   const [open, setOpen] = useState(false);
@@ -26,9 +31,12 @@ export default function Modal({
   }, [open]);
 
   // החזרת פוקוס לכפתור עם סגירת המודאל
-  useEffect(() => {
-    if (!open) triggerRef.current?.focus();
-  }, [open]);
+ useEffect(() => {
+  if (!open) {
+    // פשוט גלול לראש הדף אחרי סגירת מודאל
+    window.scrollTo(0, 0);
+  }
+}, [open]);
 
   // סגירה ב-ESC
   useEffect(() => {
