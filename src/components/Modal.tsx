@@ -95,26 +95,26 @@ export default function Modal({
             className="relative w-full max-w-4xl  rounded-2xl bg-white shadow-xl focus:outline-none"
           >
             {/* כותרת + כפתור סגירה */}
-            <div className="sticky top-0 z-60 flex items-center justify-between gap-4 border-bpx-5 py-3 rounded-t-2xl">
-              <h2 id="modal-title" className="text-base font-semibold">
-                {title}
-              </h2>
-              <button
-                type="button"
-                onClick={() => setOpen(false)}
-                aria-label="Fermer la fenêtre"
-                title="Fermer"
-                className="text-black p-2 mr-2 rounded-lg border-2 border-black hover:bg-gray-50 focus-visible:ring"
-              >
-                <X />
-              </button>
-            </div>
+          // שנה את הheader של המודאל:
+<div className="sticky top-0 z-60 flex items-start justify-between gap-4 bg-white border-b border-gray-200 px-5 py-4 rounded-t-2xl">
+  <h2 id="modal-title" className="text-xl md:text-2xl font-bold text-black leading-tight flex-1 mt-1">
+    {title}
+  </h2>
+  <button
+    type="button"
+    onClick={() => setOpen(false)}
+    aria-label="Fermer la fenêtre"
+    title="Fermer"
+    className="text-black p-2 rounded-lg border-2 border-black hover:bg-gray-50 focus-visible:ring flex-shrink-0"
+  >
+    <X size={20} />
+  </button>
+</div>
 
             {/* אזור התוכן – ניתן לגלילה */}
-            <div className="px-5 pb-5 pt-4 overflow-y-auto max-h-[calc(75vh-80px)]">
-              {/* אופציה 1: קומפוננטת התקנון המוכנה */}
-              <CGU_GraceCouture />
-            </div>
+       <div className="px-5 pb-5 pt-4 overflow-y-auto max-h-[calc(75vh-80px)] text-left">
+  <CGU_GraceCouture />
+</div>
           </div>
         </div>
       )}

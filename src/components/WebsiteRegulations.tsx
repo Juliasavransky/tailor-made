@@ -1,11 +1,7 @@
 export default function CGU_GraceCouture() {
   return (
     <main className='mx-auto max-w-3xl p-6 prose prose-neutral text-black '>
-      <article aria-labelledby='cgu-title'>
-        <h1 id='cgu-title' className='mb-4 text-black'>
-          Conditions Générales d’Utilisation du site – Grace Couture
-        </h1>
-
+      <article aria-labelledby='modal-title'>
         <section aria-labelledby='sec-1'>
           <h2 id='sec-1'>1. Général</h2>
           <p>
@@ -180,42 +176,6 @@ export default function CGU_GraceCouture() {
             selon le cas.
           </p>
         </section>
-
-        {/* NOTE: La section suivante est informative et non contractuelle; destinée à l’équipe du site. */}
-        <hr className='my-8' />
-        <aside aria-labelledby='notes-title' className='text-sm opacity-80'>
-          <h3 id='notes-title'>Notes internes (non contractuelles)</h3>
-          <ol className='list-decimal pl-5'>
-            <li>
-              <strong>GDPR</strong> – la clause sur les droits (3.7) et la
-              suppression (3.8) a été ajoutée conformément au droit français.
-            </li>
-            <li>
-              <strong>Cookies</strong> – aucune utilisation de cookies ;
-              l’indiquer clairement.
-            </li>
-            <li>
-              <strong>LocalStorage</strong> – uniquement pour les préférences
-              d’accessibilité, pas de collecte de données personnelles.
-            </li>
-            <li>
-              <strong>Durée de conservation</strong> – données conservées
-              uniquement le temps de traiter la demande, puis supprimées.
-            </li>
-            <li>
-              <strong>Droit & Juridiction</strong> – remplacé par « droit
-              français / tribunaux français (Paris ou siège) ».
-            </li>
-            <li>
-              <strong>DPO</strong> – non requis pour ce site vitrine ; à
-              vérifier si l’activité évolue.
-            </li>
-            <li>
-              <strong>Disponibilité technique</strong> – pas d’engagement de
-              disponibilité continue.
-            </li>
-          </ol>
-        </aside>
       </article>
     </main>
   );

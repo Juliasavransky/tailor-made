@@ -163,6 +163,7 @@ const Footer = () => {
                   />
                 </a>
               </p>
+              
                <Modal triggerLabel="Conditions d’utilisation" />                      
               
 

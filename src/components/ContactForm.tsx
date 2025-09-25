@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Modal from './Modal';
 
 type FormValues = {
   name: string;
@@ -206,7 +207,10 @@ const ContactForm = () => {
             />
             <label htmlFor='consent' className='text-xs text-start leading-6 text-foreground'>
               <span className='font-semibold'>Je consens</span> à l’envoi de ce message et à la
-              transmission de mes coordonnées conformément au <span className='font-semibold'>RGPD</span>.
+              transmission de mes {" "}
+                            <Modal triggerLabel=" coordonnées conformément " />                      
+             
+              au <span className='font-semibold'>RGPD</span>.
               <br />
              
               {/* אפשר להוסיף כאן קישור לפתיחת התקנון במודאל */}
