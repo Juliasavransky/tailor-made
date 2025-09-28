@@ -131,6 +131,15 @@ module.exports = {
           },
         },
       },
+      screens: {
+        xs: '310px',     // אופציונלי למוביילים קטנים במיוחד
+        sm: '480px',     // מובייל רגיל
+        md: '640px',     // טאבלט קטן
+        lg: '768px',     // טאבלט / דסקטופ מוקטן
+        xl: '1024px',    // דסקטופ רגיל
+        '2xl': '1280px', // דסקטופ גדול
+        '3xl': '1536px', // מסכים עצומים
+      },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
         'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
@@ -140,5 +149,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate') ],
+  plugins: [require('tailwindcss-animate')],
 }

@@ -1,30 +1,34 @@
 'use client';
-import { Heart, Scissors, Sparkles } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 const About = () => {
   return (
     <section
       id='about'
-      className='section-padding py-20 px-4 md:px-8 lg:px-12 bg-background relative'
+      className='section-padding py-16 sm:py-20 px-4 sm:px-6 md:px-10 lg:px-16 bg-background relative'
     >
       {/* Background Pattern */}
       <div
-        className='absolute inset-0 pattern-triangles     background-image: 
-      linear-gradient(60deg, hsl(var(--primary) / 0.1) 25%, transparent 25%),
-      linear-gradient(-60deg, hsl(var(--secondary) / 0.08) 25%, transparent 25%);
-    background-size: 40px 70px; opacity-5'
+        className='absolute inset-0 pattern-triangles'
+        style={{
+          backgroundImage: `
+            linear-gradient(60deg, hsl(var(--primary) / 0.1) 25%, transparent 25%),
+            linear-gradient(-60deg, hsl(var(--secondary) / 0.08) 25%, transparent 25%)`,
+          backgroundSize: '40px 70px',
+          opacity: 0.05,
+        }}
       ></div>
 
       <div className='container mx-auto relative z-10'>
-        <div className='text-center mb-16'>
-          <div className='flex items-center justify-center mb-6'>
-            <Heart className='text-accent mr-3' size={28} />
-            <span className='text-accent font-semibold text-2xl'>
+        <div className='text-center mb-10 sm:mb-16'>
+          <div className='flex items-center justify-center mb-4 sm:mb-6'>
+            <Heart className='text-accent mr-3' size={24} />
+            <span className='text-accent font-semibold text-xl sm:text-2xl'>
               Our Story
             </span>
           </div>
 
-          <h2 className='text-4xl md:text-6xl font-bold text-foreground mb-8'>
+          <h2 className='text-3xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6 sm:mb-10'>
             Crafted with{' '}
             <span className='text-gradient-warm bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent'>
               Passion
@@ -32,10 +36,10 @@ const About = () => {
           </h2>
         </div>
 
-        <div className='grid md:grid-cols-2 gap-12 lg:gap-20 items-center'>
+        <div className='grid md:grid-cols-2 gap-12 lg:gap-20 items-start'>
           {/* Content */}
-          <div className='animate-slide-in-left slideInLeft 0.8s ease-out forwards'>
-            <p className='text-lg md:text-xl text-muted-foreground leading-relaxed mb-8'>
+          <div className='animate-slide-in-left'>
+            <p className='text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed sm:leading-loose mb-8 sm:mb-10 max-w-prose'>
               <span className='text-accent font-semibold'>Grace Couture </span>
               offre une large gamme de services pour répondre à tous vos besoins
               en matière de couture et de retouches. Que vous ayez besoin de
@@ -51,75 +55,44 @@ const About = () => {
               peut comporter des erreurs, pour la modifier ou la supprimer,
               cliquez ici.
               <span className='text-primary font-semibold'>
-                {' '}
-                professionalism
+                {' '}professionalism
               </span>
               ,<span className='text-secondary font-semibold'> elegance</span>,
               and
               <span className='text-accent font-semibold'> creativity</span>.
             </p>
-
-            <div className='grid sm:grid-cols-2 gap-6'>
-              <div className='flex items-start space-x-4'>
-                <div className='bg-primary/10 p-3 rounded-lg'>
-                  <Scissors className='text-primary' size={24} />
-                </div>
-                <div>
-                  <h4 className='font-semibold text-foreground mb-2'>
-                    Expert Craftsmanship
-                  </h4>
-                  <p className='text-muted-foreground text-sm'>
-                    Years of experience in custom tailoring
-                  </p>
-                </div>
-              </div>
-
-              <div className='flex items-start space-x-4'>
-                <div className='bg-secondary/10 p-3 rounded-lg'>
-                  <Sparkles className='text-secondary' size={24} />
-                </div>
-                <div>
-                  <h4 className='font-semibold text-foreground mb-2'>
-                    Unique Designs
-                  </h4>
-                  <p className='text-muted-foreground text-sm'>
-                    Each piece tells its own story
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Visual Element */}
-          <div className='animate-slide-in-right slideInRight 0.8s ease-out forwards'>
+          <div className='animate-slide-in-right'>
             <div className='relative'>
-              <div className='bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl p-8 backdrop-blur-sm'>
+              <div className='bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl p-6 xs:p-2 sm:p-8 md:p-10 backdrop-blur-sm max-w-md mx-auto'>
                 <div className='text-center flex flex-col items-center'>
-                  <div className='inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-full mb-6'>
-                    <Heart className='text-white' size={32} />
+                  <div className='inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-primary to-accent rounded-full mb-4 sm:mb-6'>
+                    <Heart className='text-white' size={28} />
                   </div>
 
-                  <h3 className='text-2xl font-bold text-foreground mb-4'>
+                  <h3 className='text-xl sm:text-2xl font-bold text-foreground mb-3'>
                     Quality Promise
                   </h3>
 
-                  <p className='text-muted-foreground leading-relaxed'>
+                  <p className='text-sm sm:text-base text-muted-foreground leading-normal mb-4 text-center'>
                     Every piece is crafted with attention to detail, ensuring
                     durability, comfort, and style that exceeds expectations.
                   </p>
+
                   <img
                     src='/images/grace logo icon.png'
                     alt='logo'
-                    sizes='(max-width: 768px) 100vw, 1024px'
-                    className='object-cover '
+                    className='object-contain w-28 sm:w-36 md:w-44'
                   />
                 </div>
               </div>
 
               {/* Decorative Elements */}
-              <div className='absolute -top-4 -right-4 w-8 h-8 bg-secondary rounded-full animate-pulse-slow pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'></div>
+              <div className='absolute -top-4 -right-4 w-6 h-6 bg-secondary rounded-full animate-pulse-slow'></div>
               <div
-                className='absolute -bottom-4 -left-4 w-6 h-6 bg-accent rounded-full animate-pulse-slow pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                className='absolute -bottom-4 -left-4 w-5 h-5 bg-accent rounded-full animate-pulse-slow'
                 style={{ animationDelay: '1s' }}
               ></div>
             </div>
