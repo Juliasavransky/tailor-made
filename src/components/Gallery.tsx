@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Eye } from "lucide-react";
 import { useCarousel } from "../hooks/use-carousel";
@@ -6,11 +6,8 @@ import { useRef } from "react";
 import galleryitems from '../app/data/galleryItem.json';
 import type { GalleryItem } from '../../src/types/gallery.t';
 
-
-
-
 export default function Gallery() {
-const GALLERY: GalleryItem[] = galleryitems;
+  const GALLERY: GalleryItem[] = galleryitems;
 
   const { index, next, prev, goTo } = useCarousel(GALLERY.length, { keyboard: true });
   const contactRef = useRef<HTMLElement | null>(null);
@@ -41,7 +38,8 @@ const GALLERY: GalleryItem[] = galleryitems;
         <div className="relative max-w-4xl mx-auto mb-12">
           <div className="relative overflow-hidden rounded-3xl shadow-2xl">
             <div
-              className="flex transition-transform duration-500 ease-in-out"
+              className="flex transition-transform duration-700 ease-in-out
+"
               style={{ transform: `translateX(-${index * 100}%)` }}
               role="listbox"
               aria-live="polite"
@@ -53,7 +51,7 @@ const GALLERY: GalleryItem[] = galleryitems;
                   role="option"
                   aria-selected={i === index}
                 >
-                  <div className="relative w-full h-[400px] md:h-[600px]">
+                  <div className="relative w-full h-[280px] xs:h-[320px] sm:h-[400px] md:h-[600px]">
                     <Image
                       src={item.src}
                       alt={item.alt ?? item.title}
@@ -64,13 +62,17 @@ const GALLERY: GalleryItem[] = galleryitems;
                     />
                   </div>
                   <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  
-                  <div className="absolute flex flex-col m-auto rounded-t-3xl items-center w-fit bg-background/10 backdrop-blur-md bottom-0 left-0 right-0 p-8 text-white">
-                    <span className="inline-block bg-secondary/90 text-secondary-foreground px-3 py-1 rounded-full text-sm font-semibold mb-3">
+
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center rounded-t-3xl w-full bg-background/10 backdrop-blur-md p-4 sm:p-6 text-white text-center group">
+                    <span className="inline-block bg-secondary/90 text-secondary-foreground px-3 py-1 rounded-full text-xs sm:text-sm font-semibold mb-2 sm:mb-3">
                       {item.category}
                     </span>
-                    <h3 className="text-2xl md:text-3xl font-bold mb-2">{item.title}</h3>
-                    <p className="text-white/90 text-lg">{item.description}</p>
+                    <h3 className="text-lg sm:text-xl md:text-3xl font-bold">
+                      {item.title}
+                    </h3>
+                    <p className="text-white/90 text-sm sm:text-base mt-1 sm:mt-2 group-hover:block group-focus:block hidden">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -81,22 +83,23 @@ const GALLERY: GalleryItem[] = galleryitems;
             type="button"
             onClick={prev}
             aria-label="Previous image"
-            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full p-3 bg-secondary/40 backdrop-blur-md text-secondary transition-all duration-300 hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
+            className="absolute -left-3 xs:left-2 top-1/2 -translate-y-1/2 rounded-full p-2 sm:p-3 bg-secondary/40 backdrop-blur-md text-secondary transition-all duration-700 ease-in-out hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
           >
-            <ChevronLeft size={30} aria-hidden />
+            <ChevronLeft size={24} aria-hidden />
           </button>
 
           <button
             type="button"
             onClick={next}
             aria-label="Next image"
-            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full p-3 bg-secondary/40 backdrop-blur-md text-secondary transition-all duration-300 hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
+            className="absolute -right-3 xs:right-2 top-1/2 -translate-y-1/2 rounded-full p-2 sm:p-3 bg-secondary/40 backdrop-blur-md text-secondary transition-all duration-700 ease-in-out hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
           >
-            <ChevronRight size={30} aria-hidden />
+            <ChevronRight size={24} aria-hidden />
           </button>
         </div>
 
-        <div className="flex justify-center gap-4 mb-12">
+        {/* HIDDEN THUMBNAILS ON MOBILE */}
+        <div className="hidden sm:flex justify-center gap-4 mb-12">
           {GALLERY.map((item, i) => {
             const isActive = i === index;
             return (
@@ -104,7 +107,7 @@ const GALLERY: GalleryItem[] = galleryitems;
                 key={item.id}
                 type="button"
                 onClick={() => goTo(i)}
-                className={`w-20 h-20 rounded-2xl overflow-hidden border-4 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-ring ${
+                className={`w-20 h-20 rounded-2xl overflow-hidden border-4 transition-all duration-700 ease-in-out focus:outline-none focus:ring-2 focus:ring-ring ${
                   isActive ? "border-primary shadow-lg scale-110" : "border-transparent opacity-60 hover:opacity-100"
                 }`}
                 aria-label={`Go to \"${item.title}\"`}
@@ -122,6 +125,7 @@ const GALLERY: GalleryItem[] = galleryitems;
           })}
         </div>
 
+        {/* CTA BUTTONS */}
         <div className="text-center">
           <p className="text-2xl text-muted-foreground mb-6">
             Love what you see? Let&apos;s create something unique for you.
@@ -130,14 +134,14 @@ const GALLERY: GalleryItem[] = galleryitems;
             <button
               type="button"
               onClick={() => contactRef.current?.scrollIntoView({ behavior: "smooth" })}
-              className="btn-hero bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95"
+              className="btn-hero w-full sm:w-auto min-w-[220px] bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-700 ease-in-out hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95"
             >
               Commission a Piece
             </button>
             <button
               type="button"
               onClick={() => servicesRef.current?.scrollIntoView({ behavior: "smooth" })}
-              className="btn-outline border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-105 active:scale-95"
+              className="btn-outline w-full sm:w-auto min-w-[220px] border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-700 ease-in-out hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-105 active:scale-95"
             >
               View All Services
             </button>
