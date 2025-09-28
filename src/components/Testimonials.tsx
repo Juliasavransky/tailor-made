@@ -4,9 +4,9 @@ import { useCarousel } from '../hooks/use-carousel';
 import { useMemo } from 'react';
 import testimonials from '../app/data/testimonials.json';
 
-
 export const Testimonials = () => {
-  const visibleCards = 3;
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const visibleCards = isMobile ? 1 : 3;
   const { index, next, prev } = useCarousel(testimonials.length, { keyboard: true });
 
   const displayedTestimonials = useMemo(() => {
@@ -42,19 +42,17 @@ export const Testimonials = () => {
           </p>
         </div>
 
-        <div className="relative ">
+        <div className="relative">
           <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${0}%)` }}
+            className="flex transition-transform duration-700 ease-in-out justify-center"
+            style={{ transform: `translateX(0%)` }}
           >
             {displayedTestimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="w-full md:w-1/3 px-4 shrink-0 animate-fade-in-up"
+                className="w-full sm:w-3/4 md:w-1/3 md:px-4 xs:px-0 shrink-0 animate-fade-in-up"
               >
-                <div
-                  className="card-elegant bg-card rounded-2xl p-8 shadow-lg hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-2 border border-border/50 relative group"
-                >
+                <div className="card-elegant bg-card rounded-xl md:p-8 xs:p-4 shadow-lg hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-2 border border-border/50 relative group">
                   <div className="absolute -top-4 left-8">
                     <div className="bg-primary p-3 rounded-full shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <Quote className="text-white" size={20} />
@@ -85,19 +83,18 @@ export const Testimonials = () => {
             ))}
           </div>
 
-          <div className="flex justify-center gap-72 mt-24">
+          <div className="flex justify-center gap-32 sm:gap-24 mt-16">
             <button
               onClick={prev}
               aria-label="Previous testimonials"
-              className="right-4 top-1/2 -translate-y-1/2 rounded-full p-3 bg-primary/50 backdrop-blur-md text-secondary transition-all duration-300 hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
+              className="rounded-full p-2 sm:p-3 bg-primary/50 backdrop-blur-md text-secondary transition-all duration-300 hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={next}
               aria-label="Next testimonials"
-              className="right-4 top-1/2 -translate-y-1/2 rounded-full p-3 bg-primary/50 backdrop-blur-md text-secondary transition-all duration-300 hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
-
+              className="rounded-full p-2 sm:p-3 bg-primary/50 backdrop-blur-md text-secondary transition-all duration-300 hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <ChevronRight size={24} />
             </button>
@@ -112,7 +109,7 @@ export const Testimonials = () => {
             onClick={() =>
               document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
             }
-            className="btn-hero bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95"
+            className="btn-hero lg:w-1/2 md:w-2/3 sm:w-3/4 bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95"
           >
             Start Your Journey
           </button>

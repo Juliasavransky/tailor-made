@@ -7,7 +7,7 @@ const Contact = () => {
   return (
     <section
       id='contact'
-      className='section-padding py-20 px-4 md:px-8 lg:px-12 bg-background relative'
+      className='section-padding py-20  bg-background relative'
     >
       {/* Background Pattern */}
       <div
@@ -52,7 +52,7 @@ const Contact = () => {
 
           {/* Right: Info card (זהה בסטייל לקארד של הטופס) */}
           <div className='animate-slide-in-right'>
-            <div className='card-elegant bg-card rounded-2xl p-8 shadow-lg hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-2 border border-border/50 h-full flex flex-col'>
+            <div className='card-elegant bg-card rounded-2xl p-8  xs:p-4 shadow-lg hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-2 border border-border/50 h-full flex flex-col'>
               {/* בלוקים עליונים */}
               <div className='space-y-8 text-start'>
                 {/* Location */}
