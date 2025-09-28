@@ -51,7 +51,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
         isScrolled
           ? 'bg-background/80 backdrop-blur-md shadow-lg border-b border-border/20'
           : 'bg-background/35 backdrop-blur-md shadow-lg border-b border-border/0'
@@ -62,14 +62,14 @@ const Header = () => {
           <Link
             href='/'
             aria-label='חזרה לעמוד הבית'
-            className='group flex items-center transition-[filter] duration-300 hover:[filter:drop-shadow(0_0_2.5em_#AE082F)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-xl'
+            className='group flex items-center transition-[filter] duration-300 ease-in-out hover:[filter:drop-shadow(0_0_2.5em_#AE082F)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-xl'
           >
             <Image
               src='/images/grace logo icon.png'
               alt=''
               width={isScrolled ? 64 : 96}
               height={isScrolled ? 64 : 96}
-              className={`object-cover ${isScrolled ? 'w-16' : 'w-24'} px-2 transition-all duration-300`}
+              className={`object-cover ${isScrolled ? 'w-16' : 'w-24'} px-2 transition-all duration-300 ease-in-out`}
               priority
             />
             <Image
@@ -77,7 +77,7 @@ const Header = () => {
               alt='Grace'
               width={isScrolled ? 96 : 112}
               height={isScrolled ? 64 : 96}
-              className={`object-cover ${isScrolled ? 'w-24' : 'w-28'} transition-all duration-300`}
+              className={`object-cover ${isScrolled ? 'w-24' : 'w-28'} transition-all duration-300 ease-in-out`}
               priority
             />
             <span className='sr-only'>חזרה לעמוד הבית</span>
@@ -88,7 +88,7 @@ const Header = () => {
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className={`transition-colors duration-600 font-medium hover:text-accent hover:text-2xl hover:border-b-2 border-dashed border-current ${
+                className={`transition-colors duration-600 ease-in-out font-medium hover:text-accent hover:text-2xl hover:border-b-2 border-dashed border-current ${
                   activeSection === item.href ? 'text-accent font-semibold border-b-2' : 'text-foreground'
                 }`}
               >
@@ -97,7 +97,7 @@ const Header = () => {
             ))}
             <button
               onClick={() => scrollToSection('#contact')}
-              className='btn-outline border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-110 active:scale-95'
+              className='btn-outline border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-110 active:scale-95'
             >
               Get Quote
             </button>
@@ -118,7 +118,7 @@ const Header = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className={`block w-full text-left transition-all duration-300 font-medium py-2 ${
+                  className={`block w-full text-left transition-all duration-300 ease-in-out font-medium py-2 ${
                     activeSection === item.href
                       ? 'text-primary text-lg font-semibold border-b-2 border-dashed border-current'
                       : 'text-foreground/80 hover:text-primary'
@@ -129,7 +129,7 @@ const Header = () => {
               ))}
               <button
                 onClick={() => scrollToSection('#contact')}
-                className='btn-outline w-full text-center border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-105 active:scale-95 mt-4'
+                className='btn-outline w-full text-center border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-105 active:scale-95 mt-4'
               >
                 Get Quote
               </button>

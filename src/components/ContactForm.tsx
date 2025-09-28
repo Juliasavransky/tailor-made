@@ -9,7 +9,7 @@ type FormValues = {
   name: string;
   email: string;
   message: string;
-  consent: boolean; // ✅ חדש: אישור GDPR
+  consent: boolean; // ✅ New: GDPR consent
 };
 
 const ContactForm = () => {
@@ -26,19 +26,27 @@ const ContactForm = () => {
   const [serverError, setServerError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
   const [seconds, setSeconds] = useState(20);
+  const [animateIn, setAnimateIn] = useState(false);
 
-  // טיימר וכיוון לעמוד הבית
+  // Timer and redirect to homepage
   useEffect(() => {
     if (!sent) return;
-    const tick = setInterval(() => setSeconds((s) => (s > 0 ? s - 1 : 0)), 1000);
-    const to = setTimeout(() => router.push('/'), 20000);
-    return () => {
+    const tick = setInterval(
+      () => setSeconds((s) => (s > 0 ? s - 1 : 0)),
+      1000
+    );
+  const to = setTimeout(() => {
+      setSent(false);
+      setSeconds(20);
+      setTimeout(() => setAnimateIn(true), 50); // trigger animation when form returns
+    }, 20000);
+        return () => {
       clearInterval(tick);
       clearTimeout(to);
     };
-  }, [sent, router]);
+  }, [sent]);
 
-  // שמירת ניסיונות לא-נשלחים (ללא אישור GDPR) ב-localStorage
+  // Record unsent attempts (without GDPR consent) in localStorage
   const recordUnsent = (reason: string) => {
     try {
       const listKey = 'unsent-submissions';
@@ -49,7 +57,10 @@ const ContactForm = () => {
         values,
         ts: new Date().toISOString(),
       };
-      localStorage.setItem(listKey, JSON.stringify([entry, ...existing].slice(0, 50)));
+      localStorage.setItem(
+        listKey,
+        JSON.stringify([entry, ...existing].slice(0, 50))
+      );
     } catch {
       // ignore storage errors
     }
@@ -64,17 +75,18 @@ const ContactForm = () => {
         body: JSON.stringify(data),
       });
       const payload = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(payload?.error || 'Failed');
+      if (!res.ok) throw new Error(payload?.error || 'Échec');
 
-      // הצלחה
+      // Success
       setSent(true);
+      setAnimateIn(false);
       reset();
     } catch (err: any) {
-      setServerError('שליחה נכשלה. נסי שוב מאוחר יותר.');
+      setServerError('Échec de l’envoi. Veuillez réessayer plus tard.');
     }
   };
 
-  // טיפול במצב לא-תקין (למשל consent לא מסומן)
+  // Handle invalid state (e.g. consent not checked)
   const onInvalid = () => {
     if (errors.consent) {
       recordUnsent('Consent not given (GDPR)');
@@ -82,24 +94,30 @@ const ContactForm = () => {
     }
   };
 
-  // מסך תודה לאחר שליחה
+  // Thank you screen after submission
   if (sent) {
     return (
-      <div className='card-elegant bg-card rounded-2xl p-8 shadow-lg border border-border/50 h-full flex flex-col items-center justify-center text-center animate-fade-in-up'>
-        <CheckCircle2 size={56} className='text-secondary mb-4' aria-hidden />
-        <h3 className='text-2xl font-bold text-foreground mb-2'>
-          תודה! קיבלנו את ההודעה שלך
+      <div className="card-elegant bg-card rounded-2xl p-8 shadow-lg border border-border/50 h-full flex flex-col items-center justify-center text-center animate-fade-in-up">
+        <img
+          src="/images/grace logo icon.png"
+          alt="Grace Couture Logo"
+          className="object-contain w-28 sm:w-36 md:w-44 mb-6"
+        />
+        <CheckCircle2 size={56} className="text-secondary mb-4" aria-hidden />
+        <h3 className="text-2xl font-bold text-foreground mb-2">
+          Merci ! Nous avons bien reçu votre message
         </h3>
-        <p className='text-muted-foreground mb-6'>
-          ניצור קשר בהקדם. נחזיר אותך לעמוד הבית בעוד{' '}
-          <span className='font-semibold'>{seconds}</span> שניות.
+        <p className="text-muted-foreground mb-6">
+          Nous vous contacterons dès que possible. Vous serez redirigé vers le
+          formulaire dans <span className="font-semibold">{seconds}</span>{" "}
+          secondes.
         </p>
         <button
-          type='button'
+          type="button"
           onClick={() => router.push('/')}
-          className='btn-hero w-full bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95'
+          className="btn-hero w-full bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95"
         >
-          חזרה לעמוד הבית עכשיו
+          Retour à la page d’accueil maintenant
         </button>
       </div>
     );
@@ -107,7 +125,9 @@ const ContactForm = () => {
 
   return (
     <div className='card-elegant bg-card rounded-2xl p-8 shadow-lg hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-2 border border-border/50 h-full flex flex-col'>
-      <h3 className='text-2xl font-bold text-foreground mb-6'>Send us a Message</h3>
+      <h3 className='text-2xl font-bold text-foreground mb-6'>
+        Envoyez-nous un message
+      </h3>
 
       <form
         onSubmit={handleSubmit(onSubmit, onInvalid)}
@@ -116,8 +136,11 @@ const ContactForm = () => {
       >
         {/* Name */}
         <div>
-          <label htmlFor='name' className='text-start block font-semibold text-foreground mb-2 text-xl'>
-            Full Name
+          <label
+            htmlFor='name'
+            className='text-start block font-semibold text-foreground mb-2 text-xl'
+          >
+            Nom complet
           </label>
           <input
             id='name'
@@ -125,26 +148,33 @@ const ContactForm = () => {
             autoComplete='name'
             aria-invalid={!!errors.name}
             {...register('name', {
-              required: 'שדה חובה',
-              minLength: { value: 2, message: 'לפחות 2 תווים' },
-              maxLength: { value: 80, message: 'מקסימום 80 תווים' },
+              required: 'Champ requis',
+              minLength: { value: 2, message: 'Au moins 2 caractères' },
+              maxLength: { value: 80, message: 'Maximum 80 caractères' },
               pattern: {
                 value: /^[\p{L}\s'.-]+$/u,
-                message: 'שם לא תקין',
+                message: 'Nom invalide',
               },
             })}
             className={`w-full px-4 py-3 bg-input border rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent ${
               errors.name ? 'border-destructive' : 'border-border'
             }`}
-            placeholder='Your full name'
+            placeholder='Votre nom complet'
           />
-          {errors.name && <p role='alert' className='mt-2 text-sm text-destructive'>{errors.name.message}</p>}
+          {errors.name && (
+            <p role='alert' className='mt-2 text-sm text-destructive'>
+              {errors.name.message}
+            </p>
+          )}
         </div>
 
         {/* Email */}
         <div>
-          <label htmlFor='email' className='text-start block text-xl font-semibold text-foreground mb-2'>
-            Email Address
+          <label
+            htmlFor='email'
+            className='text-start block text-xl font-semibold text-foreground mb-2'
+          >
+            Adresse e-mail
           </label>
           <input
             id='email'
@@ -152,24 +182,31 @@ const ContactForm = () => {
             autoComplete='email'
             aria-invalid={!!errors.email}
             {...register('email', {
-              required: 'שדה חובה',
+              required: 'Champ requis',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'כתובת אימייל לא תקינה',
+                message: 'Adresse e-mail invalide',
               },
-              maxLength: { value: 254, message: 'אימייל ארוך מדי' },
+              maxLength: { value: 254, message: 'Adresse e-mail trop longue' },
             })}
             className={`w-full px-4 py-3 bg-input border rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent ${
               errors.email ? 'border-destructive' : 'border-border'
             }`}
-            placeholder='your@email.com'
+            placeholder='votre@email.com'
           />
-          {errors.email && <p role='alert' className='mt-2 text-sm text-destructive'>{errors.email.message}</p>}
+          {errors.email && (
+            <p role='alert' className='mt-2 text-sm text-destructive'>
+              {errors.email.message}
+            </p>
+          )}
         </div>
 
         {/* Message */}
         <div>
-          <label htmlFor='message' className='text-start block text-xl font-semibold text-foreground mb-2'>
+          <label
+            htmlFor='message'
+            className='text-start block text-xl font-semibold text-foreground mb-2'
+          >
             Message
           </label>
           <textarea
@@ -177,19 +214,23 @@ const ContactForm = () => {
             rows={6}
             aria-invalid={!!errors.message}
             {...register('message', {
-              required: 'שדה חובה',
-              minLength: { value: 10, message: 'לפחות 10 תווים' },
-              maxLength: { value: 2000, message: 'מקסימום 2000 תווים' },
+              required: 'Champ requis',
+              minLength: { value: 10, message: 'Au moins 10 caractères' },
+              maxLength: { value: 2000, message: 'Maximum 2000 caractères' },
             })}
             className={`w-full px-4 py-3 bg-input border rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none h-80 ${
               errors.message ? 'border-destructive' : 'border-border'
             }`}
-            placeholder='Tell us about your project or inquiry...'
+            placeholder='Parlez-nous de votre projet ou de votre demande...'
           />
-          {errors.message && <p role='alert' className='mt-2 text-sm text-destructive'>{errors.message.message}</p>}
+          {errors.message && (
+            <p role='alert' className='mt-2 text-sm text-destructive'>
+              {errors.message.message}
+            </p>
+          )}
         </div>
 
-        {/* GDPR Consent ✅ חובה */}
+        {/* GDPR Consent ✅ Required */}
         <div className='pt-2'>
           <div className='flex items-start gap-3'>
             <input
@@ -199,25 +240,28 @@ const ContactForm = () => {
               aria-describedby='consent-hint'
               {...register('consent', {
                 required:
-                  'חובה לאשר את תנאי השליחה והפרטיות (GDPR) כדי לשלוח את ההודעה.',
+                  'Vous devez accepter les conditions d’envoi et de confidentialité (RGPD) pour envoyer ce message.',
               })}
               className={`mt-1 h-5 w-5 rounded border ${
-                errors.consent ? 'border-destructive ring-1 ring-destructive' : 'border-border'
+                errors.consent
+                  ? 'border-destructive ring-1 ring-destructive'
+                  : 'border-border'
               }`}
             />
-            <label htmlFor='consent' className='text-xs text-start leading-6 text-foreground'>
-              <span className='font-semibold'>Je consens</span> à l’envoi de ce message et à la
-              transmission de mes {" "}
-                            <Modal triggerLabel=" coordonnées conformément " />                      
-             
+            <label
+              htmlFor='consent'
+              className='text-xs text-start leading-6 text-foreground'
+            >
+              <span className='font-semibold'>Je consens</span> à l’envoi de ce
+              message et à la transmission de mes{' '}
+              <Modal triggerLabel=' coordonnées conformément ' />
               au <span className='font-semibold'>RGPD</span>.
               <br />
-             
-              {/* אפשר להוסיף כאן קישור לפתיחת התקנון במודאל */}
+              {/* You can add here a button to open the Terms modal */}
               {/* <button type="button" className="ml-2 underline" onClick={() => openModal()}>Lire les CGU</button> */}
             </label>
           </div>
-     
+
           {errors.consent && (
             <p role='alert' className='mt-2 text-sm text-destructive'>
               {errors.consent.message}
@@ -227,7 +271,9 @@ const ContactForm = () => {
 
         {/* Server error */}
         {serverError && (
-          <p role='alert' className='text-sm text-destructive -mt-2'>{serverError}</p>
+          <p role='alert' className='text-sm text-destructive -mt-2'>
+            {serverError}
+          </p>
         )}
 
         {/* Submit */}
@@ -239,12 +285,15 @@ const ContactForm = () => {
           {isSubmitting ? (
             <span className='inline-flex items-center gap-2'>
               <Loader2 className='animate-spin' size={20} />
-              Sending...
+              Envoi en cours...
             </span>
           ) : (
             <>
-              Send Message
-              <Send className='ml-4 group-hover:translate-x-1 transition-transform duration-300 inline' size={20} />
+              Envoyer le message
+              <Send
+                className='ml-4 group-hover:translate-x-1 transition-transform duration-300 inline'
+                size={20}
+              />
             </>
           )}
         </button>

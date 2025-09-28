@@ -18,8 +18,7 @@ const Footer = () => {
   return (
     <footer
       className='bg-primary text-primary-foreground relative overflow-hidden
-    w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] 
-    '
+    w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw]'
     >
       {/* Background Pattern */}
       <div
@@ -35,18 +34,18 @@ const Footer = () => {
       <div className='relative z-10'>
         {/* Main Footer Content */}
         <div className='container mx-auto px-4 lg:px-8 py-8'>
-          <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-start'>
+          <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-start sm:text-center'>
             {/* Brand */}
-            <div className='lg:col-span-2 flex flex-col items-start'>
+            <div className='lg:col-span-2 flex flex-col items-start sm:items-center'>
               <h3 className='text-3xl  font-bold text-secondary mb-4'>
-                Tailor Studio
+                Grace Couture
               </h3>
               <p className=' text-primary-foreground/80 text-lg leading-relaxed mb-6 max-w-md'>
                 Professional tailoring with soul. Creating handmade products and
                 custom garments where every stitch tells a story of
                 craftsmanship and creativity.
               </p>
-              <div className='flex items-center space-x-4'>
+              <div className='flex items-center justify-center space-x-4'>
                 <a
                   target='_blank'
                   href='https://www.facebook.com/profile.php?id=61573415275658&locale=fr_FR'
@@ -80,7 +79,7 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div>
+            <div className='flex flex-col items-start sm:items-center'>
               <h4 className='text-xl font-semibold text-secondary mb-6'>
                 Quick Links
               </h4>
@@ -95,7 +94,7 @@ const Footer = () => {
                   <li key={link.label}>
                     <button
                       onClick={() => scrollToSection(link.href)}
-                      className='text-primary-foreground/80 hover:text-secondary transition-colors duration-300 text-left'
+                      className='text-primary-foreground/80 hover:text-secondary transition-colors duration-300 text-left sm:text-center'
                     >
                       {link.label}
                     </button>
@@ -105,12 +104,12 @@ const Footer = () => {
             </div>
 
             {/* Contact Info */}
-            <div>
+            <div className='flex flex-col items-start sm:items-center'>
               <h4 className='text-xl font-semibold text-secondary mb-6'>
                 Contact Info
               </h4>
-              <div className='space-y-4 text-primary-foreground/80 flex flex-col items-base'>
-                <p>
+              <div className='space-y-4 text-primary-foreground/80 flex flex-col items-start sm:items-center'>
+                <p className='text-center sm:text-center'>
                   3, Rue Fefnand Raynaud
                   <br />
                   63360 Gerzat
@@ -125,7 +124,7 @@ const Footer = () => {
                     06 59 14 98 99
                   </a>
                 </p>
-                <p className='break-all '>
+                <p className='break-all text-center sm:text-center'>
                   Mardi : 10:00-12:30, 14:00-18:30
                   <br />
                   Mercredi : 10:00-12:30, 14:00-18:30
@@ -144,7 +143,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className='border-t border-primary-foreground/20'>
           <div className='container mx-auto px-4 lg:px-8 py-6'>
-            <div className='flex flex-col md:flex-row items-center justify-between'>
+            <div className='flex flex-col md:flex-row items-center justify-between text-center md:text-left'>
               <p className='text-primary-foreground/60 text-sm mb-4 md:mb-0'>
                 © {new Date().getFullYear()} All Rights Reserved – Grace
                 Couture. Design & Development by Web_Witch Design studio{'  '}
@@ -163,13 +162,12 @@ const Footer = () => {
                   />
                 </a>
               </p>
-              
-               <Modal triggerLabel="Conditions d’utilisation" />                      
-              
+
+              <Modal triggerLabel='Conditions d’utilisation' />
 
               <button
                 onClick={scrollToTop}
-                className='bg-secondary/20 hover:bg-secondary text-secondary hover:text-secondary-foreground p-3 rounded-full transition-all duration-300 hover:scale-110 group'
+                className='bg-secondary/20 hover:bg-secondary text-secondary hover:text-secondary-foreground p-3 rounded-full transition-all duration-300 hover:scale-110 group mt-4 md:mt-0'
               >
                 <ArrowUp
                   size={20}
