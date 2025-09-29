@@ -61,7 +61,7 @@ const Header = () => {
         <div className='flex items-center justify-between h-auto min-h-[60px]'>
           <Link
             href='/'
-            aria-label='חזרה לעמוד הבית'
+            aria-label='back to home page'
             className='group flex items-center transition-[filter] duration-300 ease-in-out hover:[filter:drop-shadow(0_0_2.5em_#AE082F)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-xl'
           >
             <Image
@@ -84,7 +84,6 @@ const Header = () => {
               } transition-all duration-300 ease-in-out`}
               priority
             />
-            <span className='sr-only'>חזרה לעמוד הבית</span>
           </Link>
 
           <div className='hidden xl:flex items-center space-x-8'>
@@ -92,7 +91,7 @@ const Header = () => {
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className={`transition-colors duration-600 ease-in-out font-medium hover:text-accent hover:text-2xl hover:border-b-2 border-dashed border-current ${
+                className={`transition-all duration-700 ease-in-out font-medium hover:text-accent hover:text-xl hover:border-b-2 border-dashed border-current ${
                   activeSection === item.href
                     ? 'text-accent font-semibold border-b-2'
                     : 'text-foreground'
@@ -128,13 +127,13 @@ const Header = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className={`relative hover:after:animate-dash block w-full text-center transition-all duration-300 ease-in-out font-medium py-2
-            ${
-              activeSection === item.href
-                ? 'text-primary text-lg font-semibold after:block after:w-0 after:h-[2px] after:border-b-2 after:border-dashed after:border-current after:mx-auto after:animate-dash'
-                : 'text-foreground/80 hover:text-primary'
-            }`}
-                >
+         className={`relative block w-full text-center transition-all duration-300 ease-in-out font-medium py-2
+      ${
+        activeSection === item.href
+          ? 'text-primary text-lg font-semibold after:block after:w-full after:h-[2px] after:origin-left after:scale-x-0 after:border-b-2 after:border-dashed after:border-current after:mx-auto '
+          : 'text-foreground/80 hover:text-primary after:block after:w-full after:h-[2px] after:origin-left after:scale-x-0 after:border-b-2 after:border-dashed after:border-current after:mx-auto hover:after:animate-dash-hover'
+      }`}
+  >
                   {item.label}
                 </button>
               ))}

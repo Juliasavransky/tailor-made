@@ -22,7 +22,7 @@ const About = () => {
       <div className='container mx-auto relative z-10'>
         <div className='text-center mb-10 sm:mb-16'>
           <div className='flex items-center justify-center mb-4 sm:mb-6'>
-            <Heart className='text-accent mr-3' size={24} />
+            <Heart className='text-accent  mr-3' size={24} />
             <span className='text-accent font-semibold text-xl sm:text-2xl'>
               Our Story
             </span>
@@ -69,7 +69,7 @@ const About = () => {
               <div className='bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl p-6 xs:p-2 sm:p-8 md:p-10 backdrop-blur-sm max-w-md mx-auto'>
                 <div className='text-center flex flex-col items-center'>
                   <div className='inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-primary to-accent rounded-full mb-4 sm:mb-6'>
-                    <Heart className='text-white' size={28} />
+                    <Heart className='text-white animate-heartbeat' size={28} />
                   </div>
 
                   <h3 className='text-xl sm:text-2xl font-bold text-foreground mb-3'>

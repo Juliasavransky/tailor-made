@@ -43,7 +43,7 @@ className='relative z-20 text-center px-4 sm:px-6 md:px-10 lg:px-14 py-8 sm:py-1
           mask: `radial-gradient(ellipse 85% 85% at center, black 30%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0.4) 80%, transparent 100%), radial-gradient(ellipse 70% 90% at 25% 30%, transparent 0%, black 10%, transparent 80%), radial-gradient(ellipse 90% 70% at 75% 70%, transparent 0%, black 15%, transparent 85%)`,
         }}
       >
-        <div className='animate-fade-in-up fadeInUp 0.8s ease-out forwards'>
+        <div className='animate-fade-in-up  0.4s ease-out forwards'>
           <div className='flex items-center justify-center mb-3 sm:mb-6'>
             <Sparkles
               className='text-secondary mr-2 sm:mr-3 animate-pulse-slow'
@@ -52,6 +52,10 @@ className='relative z-20 text-center px-4 sm:px-6 md:px-10 lg:px-14 py-8 sm:py-1
             <span className='text-secondary font-semibold text-sm sm:text-lg md:text-2xl'>
               Professional Tailoring
             </span>
+               <Sparkles
+              className='text-secondary ml-2 sm:ml-3 animate-pulse-slow'
+              size={24}
+            />
           </div>
 
           <h1

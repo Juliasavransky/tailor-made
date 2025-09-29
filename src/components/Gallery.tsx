@@ -70,7 +70,7 @@ export default function Gallery() {
                     <h3 className="text-lg sm:text-xl md:text-3xl font-bold">
                       {item.title}
                     </h3>
-                    <p className="text-white/90 text-sm sm:text-base mt-1 sm:mt-2 group-hover:block group-focus:block hidden">
+                    <p className="text-white/90 text-sm sm:text-base mt-1 sm:mt-2 group-hover:block animate-fade-in-up group-focus:block hidden">
                       {item.description}
                     </p>
                   </div>

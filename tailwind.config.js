@@ -84,9 +84,17 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
-              dash: {
-          '0%': { transform: 'scaleX(0)', transformOrigin: 'left' },
-          '100%': { transform: 'scaleX(1)', transformOrigin: 'left' },
+        dash: {
+          '0%': {
+            transform: 'scaleX(0)',
+            transformOrigin: 'left',
+          },
+          '100%': {
+            width: '60%',
+            transformOrigin: 'left',
+            transform: 'scaleX(1)',
+
+          },
         },
         fadeInUp: {
           from: {
@@ -126,6 +134,13 @@ module.exports = {
             transform: 'translateY(-10px)',
           },
         },
+        heartbeat: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '14%': { transform: 'scale(1.3)' },
+          '28%': { transform: 'scale(1)' },
+          '42%': { transform: 'scale(1.3)' },
+          '70%': { transform: 'scale(1)' },
+        },
         pulseSlow: {
           '0%, 100%': {
             opacity: '1',
@@ -139,7 +154,7 @@ module.exports = {
         'xs': '310px',
         'sm': '480px',
         'md': '640px',
-        'lg': '770px',
+        'lg': '768px',
         'xl': '1024px',
         '2xl': '1280px',
         '3xl': '1536px',
@@ -150,7 +165,10 @@ module.exports = {
         'slide-in-right': 'slideInRight 0.8s ease-out forwards',
         'float': 'float 3s ease-in-out infinite',
         'pulse-slow': 'pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'dash': 'dash 5s ease-in-out 1s forwards',
+        'dash-hover': 'dash 2s ease-in-out .5s forwards',
+        'heartbeat': 'heartbeat 1.5s ease-in-out infinite',
+
+
       },
     },
   },
