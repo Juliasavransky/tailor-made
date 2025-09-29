@@ -44,7 +44,7 @@ const Contact = () => {
         </div>
 
         {/* Grid */}
-        <div className='grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch'>
+        <div className='grid xl:grid-cols-2 gap-12 xl:gap-20 items-stretch'>
           {/* Left: Form card */}
           <div className='animate-slide-in-left'>
             <ContactForm />

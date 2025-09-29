@@ -89,7 +89,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className='grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12'>
+        <div className='grid grig-cols-1  sm:grid-cols-1  xl:grid-cols-3 gap-8 lg:gap-12'>
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -156,7 +156,7 @@ const Services = () => {
                 .querySelector('#contact')
                 ?.scrollIntoView({ behavior: 'smooth' })
             }
-            className='btn-hero w-full sm:w-3/4 md:w-2/3 lg:w-1/2 bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95'
+            className='btn-hero w-full xl:w-full    bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95'
           >
             Start Your Project
           </button>

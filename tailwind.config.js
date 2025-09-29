@@ -84,6 +84,10 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
+              dash: {
+          '0%': { transform: 'scaleX(0)', transformOrigin: 'left' },
+          '100%': { transform: 'scaleX(1)', transformOrigin: 'left' },
+        },
         fadeInUp: {
           from: {
             opacity: '0',
@@ -132,13 +136,13 @@ module.exports = {
         },
       },
       screens: {
-        xs: '310px',     // אופציונלי למוביילים קטנים במיוחד
-        sm: '480px',     // מובייל רגיל
-        md: '640px',     // טאבלט קטן
-        lg: '768px',     // טאבלט / דסקטופ מוקטן
-        xl: '1024px',    // דסקטופ רגיל
-        '2xl': '1280px', // דסקטופ גדול
-        '3xl': '1536px', // מסכים עצומים
+        'xs': '310px',
+        'sm': '480px',
+        'md': '640px',
+        'lg': '770px',
+        'xl': '1024px',
+        '2xl': '1280px',
+        '3xl': '1536px',
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
@@ -146,8 +150,9 @@ module.exports = {
         'slide-in-right': 'slideInRight 0.8s ease-out forwards',
         'float': 'float 3s ease-in-out infinite',
         'pulse-slow': 'pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'dash': 'dash 5s ease-in-out 1s forwards',
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
-}
+};

@@ -69,7 +69,9 @@ const Header = () => {
               alt=''
               width={isScrolled ? 64 : 96}
               height={isScrolled ? 64 : 96}
-              className={`object-cover ${isScrolled ? 'w-16' : 'w-24'} px-2 transition-all duration-300 ease-in-out`}
+              className={`object-cover ${
+                isScrolled ? 'w-16' : 'w-24'
+              } px-2 transition-all duration-300 ease-in-out`}
               priority
             />
             <Image
@@ -77,19 +79,23 @@ const Header = () => {
               alt='Grace'
               width={isScrolled ? 96 : 112}
               height={isScrolled ? 64 : 96}
-              className={`object-cover ${isScrolled ? 'w-24' : 'w-28'} transition-all duration-300 ease-in-out`}
+              className={`object-cover ${
+                isScrolled ? 'w-24' : 'w-28'
+              } transition-all duration-300 ease-in-out`}
               priority
             />
             <span className='sr-only'>חזרה לעמוד הבית</span>
           </Link>
 
-          <div className='hidden md:flex items-center space-x-8'>
+          <div className='hidden xl:flex items-center space-x-8'>
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
                 className={`transition-colors duration-600 ease-in-out font-medium hover:text-accent hover:text-2xl hover:border-b-2 border-dashed border-current ${
-                  activeSection === item.href ? 'text-accent font-semibold border-b-2' : 'text-foreground'
+                  activeSection === item.href
+                    ? 'text-accent font-semibold border-b-2'
+                    : 'text-foreground'
                 }`}
               >
                 {item.label}
@@ -104,7 +110,7 @@ const Header = () => {
           </div>
 
           <button
-            className='md:hidden p-2 text-foreground/80 hover:text-primary transition-colors'
+            className='xl:hidden p-2 text-foreground/80 hover:text-primary transition-colors'
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={32} /> : <Menu size={32} />}
@@ -112,32 +118,32 @@ const Header = () => {
         </div>
 
         {isMobileMenuOpen && (
-          <div className='md:hidden absolute top-full left-0 right-0 max-h-[75vh] overflow-y-auto bg-gradient-to-b from-white to-gray-100/90 backdrop-blur-md border-b border-border/20 shadow-lg scroll-smooth'>
-            <div className='py-4 px-4 space-y-4'>
+          <div
+            className='xl:hidden absolute top-full left-0 right-0 max-h-[75vh] overflow-y-auto 
+                  bg-gradient-to-b from-white to-gray-100/90 backdrop-blur-md 
+                  border-b border-border/20 shadow-lg scroll-smooth'
+          >
+            <div className='py-4 px-4 space-y-6 flex flex-col items-center'>
               {navItems.map((item) => (
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-                  className={`block w-full text-left transition-all duration-300 ease-in-out font-medium py-2 ${
-                    activeSection === item.href
-                      ? 'text-primary text-lg font-semibold border-b-2 border-dashed border-current'
-                      : 'text-foreground/80 hover:text-primary'
-                  }`}
+                  className={`relative hover:after:animate-dash block w-full text-center transition-all duration-300 ease-in-out font-medium py-2
+            ${
+              activeSection === item.href
+                ? 'text-primary text-lg font-semibold after:block after:w-0 after:h-[2px] after:border-b-2 after:border-dashed after:border-current after:mx-auto after:animate-dash'
+                : 'text-foreground/80 hover:text-primary'
+            }`}
                 >
                   {item.label}
                 </button>
               ))}
-              <button
-                onClick={() => scrollToSection('#contact')}
-                className='btn-outline w-full text-center border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-105 active:scale-95 mt-4'
-              >
-                Get Quote
-              </button>
 
               <button
-                onClick={() => scrollToSection('#accessibility')}
-                className='text-sm text-gray-500 underline hover:text-black block text-center'
+                onClick={() => scrollToSection('#contact')}
+                className='btn-outline w-1/3 text-center border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-105 active:scale-95 mt-4'
               >
+                Get Quote
               </button>
             </div>
           </div>
