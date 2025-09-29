@@ -14,12 +14,12 @@ export async function sendContactEmail({ name, email, message }: ContactPayload)
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 465,         // 587 גם עובד, אבל 465 עדיף עם secure: true
+    port: 465,         
     secure: true,
     auth: { user, pass },
   });
 
-  // אופציונלי: בדיקת חיבור
+ 
   await transporter.verify();
 
   const info = await transporter.sendMail({
@@ -34,13 +34,12 @@ export async function sendContactEmail({ name, email, message }: ContactPayload)
         <p style="white-space:pre-line">${escapeHtml(message)}</p>
       </div>
     `,
-    replyTo: email, // כך כשלוחצים Reply זה חוזר לשולח
+    replyTo: email, 
   });
 
   return info.messageId;
 }
 
-// היגיינה בסיסית למניעת החדרת HTML
 function escapeHtml(s: string) {
   return s.replace(/[&<>"']/g, (m) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',

@@ -2,25 +2,25 @@
   {
     "id": 1,
     "src": "/images/products-1.jpg",
-    "title": "Handmade Bags Collection",
-    "description": "Beautiful African-inspired bags with geometric patterns",
-    "category": "Accessories",
-    "alt": "African-inspired handmade bags with geometric textile patterns"
+    "title": "Collection de sacs faits main",
+    "description": "Magnifiques sacs inspirés d’Afrique avec motifs géométriques",
+    "category": "Accessoires",
+    "alt": "Sacs artisanaux inspirés d’Afrique avec motifs textiles géométriques"
   },
   {
     "id": 2,
     "src": "/images/products-2.jpg",
-    "title": "Custom Tailoring",
-    "description": "Elegant custom garments with traditional patterns",
-    "category": "Tailoring",
-    "alt": "Tailored garment on mannequin with bold patterned fabric"
+    "title": "Couture sur mesure",
+    "description": "Vêtements élégants sur mesure avec motifs traditionnels",
+    "category": "Couture",
+    "alt": "Vêtement sur mesure sur un mannequin avec tissu à motifs audacieux"
   },
   {
     "id": 3,
     "src": "/images/products-3.jpg",
-    "title": "Jewelry & Accessories",
-    "description": "Unique handcrafted jewelry and fashion accessories",
-    "category": "Accessories",
-    "alt": "Handcrafted jewelry and accessories arranged on display"
+    "title": "Bijoux & Accessoires",
+    "description": "Bijoux et accessoires de mode uniques faits à la main",
+    "category": "Accessoires",
+    "alt": "Bijoux et accessoires artisanaux exposés sur un présentoir"
   }
 ]

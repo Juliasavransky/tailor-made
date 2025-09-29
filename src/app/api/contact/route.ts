@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { sendContactEmail } from '@/lib/email';
 
-export const runtime = 'nodejs'; // Nodemailer דורש Node, לא Edge
+export const runtime = 'nodejs';
 
 export async function POST(req: Request) {
   try {

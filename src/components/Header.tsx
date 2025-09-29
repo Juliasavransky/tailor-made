@@ -11,10 +11,10 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('#hero');
 
   const navItems = [
-    { label: 'Home', href: '#hero' },
-    { label: 'About', href: '#about' },
+    { label: 'Accueil', href: '#hero' },
+    { label: 'À propos', href: '#about' },
     { label: 'Services', href: '#services' },
-    { label: 'Gallery', href: '#gallery' },
+    { label: 'Galerie', href: '#gallery' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -61,12 +61,12 @@ const Header = () => {
         <div className='flex items-center justify-between h-auto min-h-[60px]'>
           <Link
             href='/'
-            aria-label='back to home page'
+            aria-label="Retour à la page d’accueil"
             className='group flex items-center transition-[filter] duration-300 ease-in-out hover:[filter:drop-shadow(0_0_2.5em_#AE082F)] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/70 rounded-xl'
           >
             <Image
               src='/images/grace logo icon.png'
-              alt=''
+              alt='Logo icône Grace Couture'
               width={isScrolled ? 64 : 96}
               height={isScrolled ? 64 : 96}
               className={`object-cover ${
@@ -76,7 +76,7 @@ const Header = () => {
             />
             <Image
               src='/images/grace logo text.png'
-              alt='Grace'
+              alt='Grace Couture'
               width={isScrolled ? 96 : 112}
               height={isScrolled ? 64 : 96}
               className={`object-cover ${
@@ -104,7 +104,7 @@ const Header = () => {
               onClick={() => scrollToSection('#contact')}
               className='btn-outline border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-110 active:scale-95'
             >
-              Get Quote
+              Demander un devis
             </button>
           </div>
 
@@ -127,13 +127,13 @@ const Header = () => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.href)}
-         className={`relative block w-full text-center transition-all duration-300 ease-in-out font-medium py-2
+                  className={`relative block w-full text-center transition-all duration-300 ease-in-out font-medium py-2
       ${
         activeSection === item.href
           ? 'text-primary text-lg font-semibold after:block after:w-full after:h-[2px] after:origin-left after:scale-x-0 after:border-b-2 after:border-dashed after:border-current after:mx-auto '
           : 'text-foreground/80 hover:text-primary after:block after:w-full after:h-[2px] after:origin-left after:scale-x-0 after:border-b-2 after:border-dashed after:border-current after:mx-auto hover:after:animate-dash-hover'
       }`}
-  >
+                >
                   {item.label}
                 </button>
               ))}
@@ -142,7 +142,7 @@ const Header = () => {
                 onClick={() => scrollToSection('#contact')}
                 className='btn-outline w-1/3 text-center border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-in-out hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-105 active:scale-95 mt-4'
               >
-                Get Quote
+                Demander un devis
               </button>
             </div>
           </div>

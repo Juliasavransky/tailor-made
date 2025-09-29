@@ -26,20 +26,20 @@ const Contact = () => {
           <div className='flex items-center justify-center mb-6'>
             <Mail className='text-primary mr-3' size={28} />
             <span className='text-primary font-semibold text-2xl'>
-              Get In Touch
+              Contactez-nous
             </span>
           </div>
 
           <h2 className='text-4xl md:text-6xl font-bold text-foreground mb-8'>
-            Let's{' '}
+            Créons{' '}
             <span className='text-gradient-warm bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent'>
-              Create Together
+              Ensemble
             </span>
           </h2>
 
           <p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
-            Get in touch for custom orders, repairs, or any questions – via the
-            form, WhatsApp, or visit us in person.
+            Contactez-nous pour des commandes sur mesure, des retouches ou toute
+            question – via le formulaire, WhatsApp ou en nous rendant visite en personne.
           </p>
         </div>
 
@@ -50,10 +50,10 @@ const Contact = () => {
             <ContactForm />
           </div>
 
-          {/* Right: Info card (זהה בסטייל לקארד של הטופס) */}
+          {/* Right: Info card (styled like the form card) */}
           <div className='animate-slide-in-right'>
             <div className='card-elegant bg-card rounded-2xl p-8  xs:p-4 shadow-lg hover:shadow-[var(--shadow-elegant)] transition-all duration-300 hover:-translate-y-2 border border-border/50 h-full flex flex-col'>
-              {/* בלוקים עליונים */}
+              {/* Upper blocks */}
               <div className='space-y-8 text-start'>
                 {/* Location */}
                 <div className='flex items-start gap-10'>
@@ -62,7 +62,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className='text-xl  font-semibold text-foreground mb-2'>
-                      Visit Our Studio
+                      Visitez notre atelier
                     </h4>
                     <p className='text-muted-foreground'>
                       3, Rue Fernand Raynaud
@@ -79,7 +79,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className='text-xl font-semibold text-foreground mb-2'>
-                      Call Us
+                      Appelez-nous
                     </h4>
                     <p className='text-muted-foreground'>
                       <a
@@ -99,9 +99,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className='text-xl font-semibold text-foreground mb-2'>
-                      Working Hours
+                      Horaires d'ouverture
                     </h4>
-                    <p className='text-muted-foreground'>Mardi – Samedi:</p>
+                    <p className='text-muted-foreground'>Mardi – Samedi :</p>
                     <p className='text-muted-foreground'>
                       10:00–12:30, 14:00–18:30
                     </p>
@@ -109,14 +109,14 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* אזור תחתון – מיושר לתחתית כמו הכפתור של הטופס */}
+              {/* Bottom area – aligned to bottom like the form button */}
               <div className='mt-auto space-y-6'>
                 <GoogleMapsEmbed />
               </div>
             </div>
           </div>
           <div className='flex items-center gap-4'>
-            <span className='text-foreground font-semibold'>Follow us:</span>
+            <span className='text-foreground font-semibold'>Suivez-nous :</span>
             <a
               target='_blank'
               href='https://www.facebook.com/profile.php?id=61573415275658&locale=fr_FR'

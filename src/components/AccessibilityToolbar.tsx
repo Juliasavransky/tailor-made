@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Accessibility, X } from "lucide-react";
 
 type Prefs = {
-  fontScale: number;        // 1 = רגיל
+  fontScale: number;        // 1 = normal
   highContrast: boolean;
   underlineLinks: boolean;
   reduceMotion: boolean;
@@ -11,7 +11,7 @@ type Prefs = {
 
 const STORAGE_KEY = "a11y-prefs-v1";
 
-// טקסטים בצרפתית (כנדרש)
+// Texts in French (as required)
 const t = {
   fabLabel: "Outils d’accessibilité",
   panelTitle: "Outils d’accessibilité",
@@ -37,7 +37,7 @@ export default function AccessibilityFab() {
   const firstBtnRef = useRef<HTMLButtonElement>(null);
   const fabRef = useRef<HTMLButtonElement>(null);
 
-  // טען העדפות מהאחסון המקומי ב-mount
+  // Load preferences from localStorage on mount
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -45,7 +45,7 @@ export default function AccessibilityFab() {
     } catch {}
   }, []);
 
-  // החל העדפות על <html> ושמור
+  // Apply preferences to <html> and save them
   useEffect(() => {
     const html = document.documentElement;
     html.style.setProperty("--a11y-font-scale", String(prefs.fontScale));
@@ -57,7 +57,7 @@ export default function AccessibilityFab() {
     } catch {}
   }, [prefs]);
 
-  // פתיחה/סגירה + החזרת פוקוס
+  // Open/close + return focus
   useEffect(() => {
     if (open) {
       firstBtnRef.current?.focus();
@@ -66,7 +66,7 @@ export default function AccessibilityFab() {
     }
   }, [open]);
 
-  // סגירה ב-ESC
+  // Close on ESC
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -75,7 +75,7 @@ export default function AccessibilityFab() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  // סגירה בלחיצה מחוץ לפאנל
+  // Close when clicking outside the panel
   useEffect(() => {
     const onDown = (e: MouseEvent) => {
       if (!open) return;
@@ -102,7 +102,7 @@ export default function AccessibilityFab() {
 
   return (
     <>
-      {/* כפתור צף – FAB */}
+      {/* Floating Action Button (FAB) */}
       <button
         ref={fabRef}
         type="button"
@@ -117,7 +117,7 @@ export default function AccessibilityFab() {
         <span className="sr-only">{t.fabLabel}</span>
       </button>
 
-      {/* פאנל כלים צף */}
+      {/* Floating Tools Panel */}
       {open && (
         <div
           ref={panelRef}

@@ -11,7 +11,7 @@ const GoogleMapsEmbed= ({
 
   return (
     <div className={`w-full ${className}`}>
-      {/* מפה */}
+      {/* Map */}
       <div className="relative w-full h-80 rounded-2xl overflow-hidden shadow-lg">
         <iframe
           src={simpleMapUrl}
@@ -26,7 +26,7 @@ const GoogleMapsEmbed= ({
         />
       </div>
 
-      {/* כפתור לפתיחה בגוגל מפות – אותו סטייל כמו הטופס */}
+      
       <div className="mt-4">
         <button
           onClick={() =>
@@ -37,7 +37,7 @@ const GoogleMapsEmbed= ({
           }
           className="btn-hero w-full bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95 group"
         >
-          Open in Google Maps
+          Ouvrir dans Google Maps
         </button>
       </div>
     </div>

@@ -17,7 +17,7 @@ export default function Gallery() {
     <section
       id="gallery"
       className="section-padding py-20 px-4 md:px-8 lg:px-12 bg-background relative overflow-hidden"
-      aria-label="Gallery"
+      aria-label="Galerie"
     >
       <div aria-hidden className="absolute inset-0 pattern-geometric opacity-5" />
 
@@ -25,21 +25,20 @@ export default function Gallery() {
         <header className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
             <Eye className="text-secondary mr-3" size={28} aria-hidden />
-            <span className="text-secondary font-semibold text-2xl">Our Work</span>
+            <span className="text-secondary font-semibold text-2xl">Nos Réalisations</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8">
-            <span className="text-gradient-warm bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">Creative</span> Collection
+            <span className="text-gradient-warm bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">Collection</span> Créative
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A glimpse into our collection – handmade pieces with bold colors and unique style.
+            Un aperçu de notre collection – des pièces faites main aux couleurs audacieuses et au style unique.
           </p>
         </header>
 
         <div className="relative max-w-4xl mx-auto mb-12">
           <div className="relative overflow-hidden rounded-3xl shadow-2xl">
             <div
-              className="flex transition-transform duration-700 ease-in-out
-"
+              className="flex transition-transform duration-700 ease-in-out"
               style={{ transform: `translateX(-${index * 100}%)` }}
               role="listbox"
               aria-live="polite"
@@ -82,7 +81,7 @@ export default function Gallery() {
           <button
             type="button"
             onClick={prev}
-            aria-label="Previous image"
+            aria-label="Image précédente"
             className="absolute -left-3 xs:left-2 top-1/2 -translate-y-1/2 rounded-full p-2 sm:p-3 bg-secondary/40 backdrop-blur-md text-secondary transition-all duration-700 ease-in-out hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
           >
             <ChevronLeft size={24} aria-hidden />
@@ -91,14 +90,14 @@ export default function Gallery() {
           <button
             type="button"
             onClick={next}
-            aria-label="Next image"
+            aria-label="Image suivante"
             className="absolute -right-3 xs:right-2 top-1/2 -translate-y-1/2 rounded-full p-2 sm:p-3 bg-secondary/40 backdrop-blur-md text-secondary transition-all duration-700 ease-in-out hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
           >
             <ChevronRight size={24} aria-hidden />
           </button>
         </div>
 
-        {/* HIDDEN THUMBNAILS ON MOBILE */}
+        {/* Miniatures (masquées sur mobile) */}
         <div className="hidden sm:flex justify-center gap-4 mb-12">
           {GALLERY.map((item, i) => {
             const isActive = i === index;
@@ -110,7 +109,7 @@ export default function Gallery() {
                 className={`w-20 h-20 rounded-2xl overflow-hidden border-4 transition-all duration-700 ease-in-out focus:outline-none focus:ring-2 focus:ring-ring ${
                   isActive ? "border-primary shadow-lg scale-110" : "border-transparent opacity-60 hover:opacity-100"
                 }`}
-                aria-label={`Go to \"${item.title}\"`}
+                aria-label={`Aller à « ${item.title} »`}
                 aria-current={isActive ? "true" : undefined}
               >
                 <Image
@@ -125,10 +124,10 @@ export default function Gallery() {
           })}
         </div>
 
-        {/* CTA BUTTONS */}
+        {/* Boutons d’appel à l’action */}
         <div className="text-center">
           <p className="text-2xl text-muted-foreground mb-6">
-            Love what you see? Let&apos;s create something unique for you.
+            Vous aimez ce que vous voyez ? Créons ensemble une pièce unique pour vous.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
@@ -136,14 +135,14 @@ export default function Gallery() {
               onClick={() => contactRef.current?.scrollIntoView({ behavior: "smooth" })}
               className="btn-hero w-full sm:w-auto min-w-[220px] bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-700 ease-in-out hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95"
             >
-              Commission a Piece
+              Commander une pièce
             </button>
             <button
               type="button"
               onClick={() => servicesRef.current?.scrollIntoView({ behavior: "smooth" })}
               className="btn-outline w-full sm:w-auto min-w-[220px] border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold transition-all duration-700 ease-in-out hover:bg-primary hover:text-primary-foreground hover:shadow-[var(--shadow-primary)] hover:scale-105 active:scale-95"
             >
-              View All Services
+              Voir tous les services
             </button>
           </div>
         </div>

@@ -9,7 +9,7 @@ type FormValues = {
   name: string;
   email: string;
   message: string;
-  consent: boolean; // ✅ New: GDPR consent
+  consent: boolean; // GDPR consent
 };
 
 const ContactForm = () => {
@@ -28,25 +28,25 @@ const ContactForm = () => {
   const [seconds, setSeconds] = useState(20);
   const [animateIn, setAnimateIn] = useState(false);
 
-  // Timer and redirect to homepage
+  // Timer and redirect back to the form
   useEffect(() => {
     if (!sent) return;
     const tick = setInterval(
       () => setSeconds((s) => (s > 0 ? s - 1 : 0)),
       1000
     );
-  const to = setTimeout(() => {
+    const to = setTimeout(() => {
       setSent(false);
       setSeconds(20);
       setTimeout(() => setAnimateIn(true), 50); // trigger animation when form returns
     }, 20000);
-        return () => {
+    return () => {
       clearInterval(tick);
       clearTimeout(to);
     };
   }, [sent]);
 
-  // Record unsent attempts (without GDPR consent) in localStorage
+  // Record unsent attempts (for example: without GDPR consent) in localStorage
   const recordUnsent = (reason: string) => {
     try {
       const listKey = 'unsent-submissions';
@@ -89,7 +89,7 @@ const ContactForm = () => {
   // Handle invalid state (e.g. consent not checked)
   const onInvalid = () => {
     if (errors.consent) {
-      recordUnsent('Consent not given (GDPR)');
+      recordUnsent('Consentement non donné (RGPD)');
       setFocus('consent');
     }
   };
@@ -100,7 +100,7 @@ const ContactForm = () => {
       <div className="card-elegant bg-card rounded-2xl p-8 shadow-lg border border-border/50 h-full flex flex-col items-center justify-center text-center animate-fade-in-up">
         <img
           src="/images/grace logo icon.png"
-          alt="Grace Couture Logo"
+          alt="Logo Grace Couture"
           className="object-contain w-28 sm:w-36 md:w-44 mb-6"
         />
         <CheckCircle2 size={56} className="text-secondary mb-4" aria-hidden />
@@ -230,7 +230,7 @@ const ContactForm = () => {
           )}
         </div>
 
-        {/* GDPR Consent ✅ Required */}
+        {/* GDPR Consent */}
         <div className='pt-2'>
           <div className='flex items-start gap-3'>
             <input
@@ -257,8 +257,7 @@ const ContactForm = () => {
               <Modal triggerLabel=' coordonnées conformément ' />
               au <span className='font-semibold'>RGPD</span>.
               <br />
-              {/* You can add here a button to open the Terms modal */}
-              {/* <button type="button" className="ml-2 underline" onClick={() => openModal()}>Lire les CGU</button> */}
+              {/* Optional: add Terms modal trigger button here */}
             </label>
           </div>
 

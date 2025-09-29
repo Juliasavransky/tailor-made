@@ -7,15 +7,15 @@ import testimonials from '../app/data/testimonials.json';
 export const Testimonials = () => {
   const [visibleCards, setVisibleCards] = useState(3);
 
-  // עדכון מספר הקלפים לפי גודל המסך
+  // Mise à jour du nombre de cartes selon la taille de l’écran
   useEffect(() => {
     const updateCards = () => {
       if (window.innerWidth < 768) {
-        setVisibleCards(1); // מובייל
+        setVisibleCards(1); // Mobile
       } else if (window.innerWidth < 1024) {
-        setVisibleCards(2); // בין 768 ל-1024
+        setVisibleCards(2); // Entre 768 et 1024
       } else {
-        setVisibleCards(3); // 1024 ומעלה
+        setVisibleCards(3); // 1024 et plus
       }
     };
 
@@ -43,19 +43,19 @@ export const Testimonials = () => {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
             <Star className="text-accent mr-3" size={28} />
-            <span className="text-accent font-semibold text-2xl">Testimonials</span>
+            <span className="text-accent font-semibold text-2xl">Témoignages</span>
           </div>
 
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8">
-            What Our{' '}
+            Ce que disent nos{' '}
             <span className="text-gradient-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Customers Say
+              clients
             </span>
           </h2>
 
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Real stories from satisfied customers who trust us with their
-            tailoring and fashion needs.
+            Des histoires vraies de clients satisfaits qui nous font confiance
+            pour leurs besoins en couture et en mode.
           </p>
         </div>
 
@@ -106,14 +106,14 @@ export const Testimonials = () => {
           <div className="flex justify-center gap-32 sm:gap-24 mt-16">
             <button
               onClick={prev}
-              aria-label="Previous testimonials"
+              aria-label="Témoignages précédents"
               className="rounded-full p-2 sm:p-3 bg-primary/50 backdrop-blur-md text-secondary transition-all duration-300 hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={next}
-              aria-label="Next testimonials"
+              aria-label="Témoignages suivants"
               className="rounded-full p-2 sm:p-3 bg-primary/50 backdrop-blur-md text-secondary transition-all duration-300 hover:bg-primary/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <ChevronRight size={24} />
@@ -123,7 +123,7 @@ export const Testimonials = () => {
 
         <div className="text-center mt-10">
           <p className="text-lg text-muted-foreground mb-6">
-            Ready to join our satisfied customers?
+            Prêt à rejoindre nos clients satisfaits ?
           </p>
           <button
             onClick={() =>
@@ -131,7 +131,7 @@ export const Testimonials = () => {
             }
             className="btn-hero w-full sm:w-3/4 bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95"
           >
-            Start Your Journey
+            Commencez votre aventure
           </button>
         </div>
       </div>

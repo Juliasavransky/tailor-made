@@ -20,7 +20,7 @@ const Footer = () => {
       className='bg-primary text-primary-foreground relative overflow-hidden
     w-screen left-1/2 right-1/2 ml-[-50vw] mr-[-50vw]'
     >
-      {/* Background Pattern */}
+      {/* Motif d’arrière-plan */}
       <div
         className='absolute inset-0 pattern-geometric    background-image: 
       radial-gradient(circle at 25% 25%, hsl(var(--secondary) / 0.1) 0%, transparent 50%),
@@ -32,18 +32,18 @@ const Footer = () => {
       ></div>
 
       <div className='relative z-10'>
-        {/* Main Footer Content */}
+        {/* Contenu principal du footer */}
         <div className='container mx-auto px-4 lg:px-8 py-8'>
           <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-start sm:text-center'>
-            {/* Brand */}
+            {/* Marque */}
             <div className='lg:col-span-2 flex flex-col items-start sm:items-center'>
               <h3 className='text-3xl  font-bold text-secondary mb-4'>
                 Grace Couture
               </h3>
               <p className=' text-primary-foreground/80 text-lg leading-relaxed mb-6 max-w-md'>
-                Professional tailoring with soul. Creating handmade products and
-                custom garments where every stitch tells a story of
-                craftsmanship and creativity.
+                Couture professionnelle avec passion. Création de produits faits
+                main et de vêtements sur mesure où chaque point raconte une
+                histoire de savoir-faire et de créativité.
               </p>
               <div className='flex items-center justify-center space-x-4'>
                 <a
@@ -78,17 +78,17 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Quick Links */}
+            {/* Liens rapides */}
             <div className='flex flex-col items-start sm:items-center'>
               <h4 className='text-xl font-semibold text-secondary mb-6'>
-                Quick Links
+                Liens rapides
               </h4>
               <ul className='space-y-3'>
                 {[
-                  { label: 'Home', href: '#hero' },
-                  { label: 'About', href: '#about' },
+                  { label: 'Accueil', href: '#hero' },
+                  { label: 'À propos', href: '#about' },
                   { label: 'Services', href: '#services' },
-                  { label: 'Gallery', href: '#gallery' },
+                  { label: 'Galerie', href: '#gallery' },
                   { label: 'Contact', href: '#contact' },
                 ].map((link) => (
                   <li key={link.label}>
@@ -103,14 +103,14 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Contact Info */}
+            {/* Infos de contact */}
             <div className='flex flex-col items-start sm:items-center'>
               <h4 className='text-xl font-semibold text-secondary mb-6'>
-                Contact Info
+                Coordonnées
               </h4>
               <div className='space-y-4 text-primary-foreground/80 flex flex-col items-start sm:items-center'>
                 <p className='text-center sm:text-center'>
-                  3, Rue Fefnand Raynaud
+                  3, Rue Fernand Raynaud
                   <br />
                   63360 Gerzat
                   <br />
@@ -140,13 +140,13 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Barre inférieure */}
         <div className='border-t border-primary-foreground/20'>
           <div className='container mx-auto px-4 lg:px-8 py-6'>
             <div className='flex flex-col md:flex-row items-center justify-between text-center md:text-left'>
               <p className='text-primary-foreground/60 text-sm mb-4 md:mb-0'>
-                © {new Date().getFullYear()} All Rights Reserved – Grace
-                Couture. Design & Development by Web_Witch Design studio{'  '}
+                © {new Date().getFullYear()} Tous droits réservés – Grace
+                Couture. Design & Développement par Web_Witch Design Studio{' '}
                 <a
                   href='https://www.webwitch.click/en/home'
                   target='_blank'
@@ -155,7 +155,7 @@ const Footer = () => {
                 >
                   <Image
                     src='/svg/webWitchLogo yellow.svg'
-                    alt='Web Witch Logo'
+                    alt='Logo Web Witch'
                     width={250}
                     height={45}
                     className='inline h-20 w-auto '
@@ -163,7 +163,7 @@ const Footer = () => {
                 </a>
               </p>
 
-              <Modal triggerLabel='Conditions d’utilisation' />
+              <Modal triggerLabel="Conditions d’utilisation" />
 
               <button
                 onClick={scrollToTop}

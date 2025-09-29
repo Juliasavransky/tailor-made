@@ -10,40 +10,40 @@ const Services = () => {
   const services = [
     {
       icon: Scissors,
-      title: 'Custom Tailoring',
+      title: 'Couture sur mesure',
       description:
-        'Bringing your ideas to life – from chosen fabrics to unique designs, tailored to your style and measurements.',
+        'Donner vie à vos idées – des tissus choisis aux modèles uniques, adaptés à votre style et à vos mesures.',
       features: [
-        'Made-to-measure',
-        'Fabric selection',
-        'Personal styling',
-        'Perfect fit guarantee',
+        'Confection personnalisée',
+        'Sélection de tissus',
+        'Conseil en style',
+        'Ajustement parfait garanti',
       ],
       color: 'primary',
     },
     {
       icon: Spool,
-      title: 'Repairs & Alterations',
+      title: 'Réparations & Retouches',
       description:
-        'Reviving favorite garments with precise, professional repairs and adjustments.',
+        'Redonner vie à vos vêtements préférés grâce à des retouches précises et professionnelles.',
       features: [
-        'Hemming & sizing',
-        'Zipper replacement',
-        'Fabric restoration',
-        'Style updates',
+        'Ourlets & ajustements',
+        'Remplacement de fermetures éclair',
+        'Restauration de tissus',
+        'Mises à jour de style',
       ],
       color: 'secondary',
     },
     {
       icon: Handbag,
-      title: 'Handmade Products',
+      title: 'Produits faits main',
       description:
-        'Bags, accessories, and fashion pieces – each one unique, crafted with love and attention to detail.',
+        'Sacs, accessoires et pièces uniques – chacun réalisé avec amour et souci du détail.',
       features: [
-        'Unique designs',
-        'Quality materials',
-        'Custom colors',
-        'African patterns',
+        'Designs uniques',
+        'Matériaux de qualité',
+        'Couleurs personnalisées',
+        'Motifs africains',
       ],
       color: 'accent',
     },
@@ -72,24 +72,24 @@ const Services = () => {
           <div className='flex items-center justify-center mb-6'>
             <Scissors className='text-primary mr-3' size={28} />
             <span className='text-primary font-semibold text-2xl'>
-              Our Services
+              Nos Services
             </span>
           </div>
 
           <h2 className='text-4xl md:text-6xl font-bold text-foreground mb-8'>
-            What We{' '}
+            Ce que nous{' '}
             <span className='text-gradient-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent'>
-              Create
+              créons
             </span>
           </h2>
 
           <p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
-            From custom tailoring to handmade accessories, we bring artistry and
-            precision to every project.
+            De la couture sur mesure aux accessoires faits main, nous apportons
+            de l’art et de la précision à chaque projet.
           </p>
         </div>
 
-        <div className='grid grig-cols-1  sm:grid-cols-1  xl:grid-cols-3 gap-8 lg:gap-12'>
+        <div className='grid grig-cols-1 sm:grid-cols-1 xl:grid-cols-3 gap-8 lg:gap-12'>
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -136,7 +136,7 @@ const Services = () => {
                       }
                       className={`w-full border-2 rounded-lg font-semibold px-6 py-3 transition-all duration-300 hover:scale-105 active:scale-95 text-${service.color} border-[color:var(--primary)] hover:bg-${service.color} hover:text-white`}
                     >
-                      Learn More
+                      En savoir plus
                     </button>
                   </div>
                 </div>
@@ -145,10 +145,10 @@ const Services = () => {
           })}
         </div>
 
-        {/* Call to Action */}
+        {/* Appel à l’action */}
         <div className='text-center mt-16'>
           <p className='text-lg text-muted-foreground mb-6'>
-            Ready to bring your vision to life?
+            Prêt à donner vie à votre vision ?
           </p>
           <button
             onClick={() =>
@@ -156,9 +156,9 @@ const Services = () => {
                 .querySelector('#contact')
                 ?.scrollIntoView({ behavior: 'smooth' })
             }
-            className='btn-hero w-full xl:w-full    bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95'
+            className='btn-hero w-full xl:w-full bg-gradient-to-r from-primary to-accent text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:scale-105 active:scale-95'
           >
-            Start Your Project
+            Commencez votre projet
           </button>
         </div>
       </div>

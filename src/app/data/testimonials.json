@@ -2,24 +2,24 @@
   {
     "id": 1,
     "name": "Sarah Johnson",
-    "role": "Fashion Enthusiast",
-    "content": "Absolutely stunning work! The attention to detail and the beautiful African-inspired patterns make every piece unique. My custom bag is now my favorite accessory.",
+    "role": "Passionnée de mode",
+    "content": "Un travail absolument magnifique ! L’attention portée aux détails et les superbes motifs inspirés de l’Afrique rendent chaque pièce unique. Mon sac personnalisé est devenu mon accessoire préféré.",
     "rating": 5,
     "avatar": "SJ"
   },
   {
     "id": 2,
     "name": "Michael Chen",
-    "role": "Business Executive",
-    "content": "Professional tailoring at its finest. They transformed my old suit into something that fits perfectly and looks amazing. Highly recommend their alteration services.",
+    "role": "Cadre d’entreprise",
+    "content": "Une couture professionnelle à son meilleur niveau. Ils ont transformé mon ancien costume en une tenue parfaitement ajustée et élégante. Je recommande vivement leurs services de retouche.",
     "rating": 5,
     "avatar": "MC"
   },
   {
     "id": 3,
     "name": "Amara Williams",
-    "role": "Artist",
-    "content": "The handmade accessories are works of art! Each piece tells a story and the craftsmanship is exceptional. I've ordered multiple items and they're all perfect.",
+    "role": "Artiste",
+    "content": "Les accessoires faits main sont de véritables œuvres d’art ! Chaque pièce raconte une histoire et le savoir-faire est exceptionnel. J’ai commandé plusieurs articles et ils sont tous parfaits.",
     "rating": 5,
     "avatar": "AW"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "name": "James Parker",
     "role": "Designer",
-    "content": "High quality, fast service, and unique craftsmanship. I will definitely be coming back for more items.",
+    "content": "Qualité irréprochable, service rapide et artisanat unique. Je reviendrai certainement pour d’autres créations.",
     "rating": 5,
     "avatar": "JP"
   }

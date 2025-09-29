@@ -5,7 +5,7 @@ export function useCarousel(length: number, options?: { keyboard?: boolean }) {
 
   const goTo = useCallback(
     (i: number) => {
-      setIndex(((i % length) + length) % length); // מבטיח ערך תקין גם עם מספר שלילי
+      setIndex(((i % length) + length) % length); 
     },
     [length]
   );
@@ -13,7 +13,7 @@ export function useCarousel(length: number, options?: { keyboard?: boolean }) {
   const next = useCallback(() => goTo(index + 1), [index, goTo]);
   const prev = useCallback(() => goTo(index - 1), [index, goTo]);
 
-  // אפשרות: תמיכה בדפדוף עם מקלדת
+  
   useEffect(() => {
     if (!options?.keyboard) return;
 
