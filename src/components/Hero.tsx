@@ -17,7 +17,7 @@ const Hero = () => {
       {/* Image de fond avec superposition */}
       <div className='absolute inset-0 z-0'>
         <img
-          src='../../public/images/products-2.jpg'
+          src='/images/products-2.jpg'
           alt='Atelier de couture professionnel avec des tissus colorés'
           className='w-full h-full object-cover '
         />
