@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://grace-couture.vercel.app/images/grace-logo.jpg', 
+        url: 'https://grace-couture.vercel.app/images/og-grace-couture.jpg',
         height: 630,
         alt: 'Grace Couture - Studio de couture artisanale à Paris',
       },
