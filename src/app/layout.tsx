@@ -5,6 +5,7 @@ import { Nunito_Sans, Kelly_Slab } from 'next/font/google';
 import { Toaster } from 'sonner';
 import ClientOnly from '@/components/ClientOnly';
 import AccessibilityToolbar from '@/components/AccessibilityToolbar';
+import { url } from 'inspector/promises';
 
 const nunito = Nunito_Sans({
   variable: '--font-nunito',
@@ -19,21 +20,33 @@ const kellySlab = Kelly_Slab({
 });
 
 export const metadata: Metadata = {
-  title: 'Tailor Studio - Professional Tailoring & Handmade Fashion',
+  title: 'Grace Couture - Couture sur mesure & Mode artisanale',
   description:
-    'Professional tailoring with soul. Custom garments, clothing repairs, and handmade accessories featuring African-inspired designs.',
-  authors: [{ name: 'Tailor Studio' }],
+    'Couture professionnelle avec une touche d’âme. Vêtements sur mesure, retouches de qualité et accessoires faits main aux inspirations africaines.',
+  authors: [
+    { name: 'Grace Couture', url: 'https://grace-couture.vercel.app/' },
+  ],
   openGraph: {
-    title: 'Tailor Studio - Professional Tailoring & Handmade Fashion',
+    title: 'Grace Couture - Couture sur mesure à Paris',
     description:
-      'Professional tailoring with soul. Custom garments, clothing repairs, and handmade accessories featuring African-inspired designs.',
+      'Atelier de couture professionnelle : vêtements sur mesure, retouches de qualité, et créations artisanales inspirées d’Afrique.',
+    url: 'https://grace-couture.vercel.app',
+    siteName: 'Grace Couture',
+    locale: 'fr_FR',
     type: 'website',
-    images: ['https://lovable.dev/opengraph-image-p98pqg.png'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: '@lovable_dev',
-    images: ['https://lovable.dev/opengraph-image-p98pqg.png'],
+    images: [
+      {
+        url: 'https://grace-couture.vercel.app/images/grace logo icon.png', 
+        height: 630,
+        alt: 'Grace Couture - Studio de couture artisanale à Paris',
+      },
+      {
+        url: 'https://grace-couture.vercel.app/svg/webWitchLogo-yellow.svg',
+        width: 400,
+        height: 400,
+        alt: 'Web Witch Studio - Création Web',
+      },
+    ],
   },
 };
 
