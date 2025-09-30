@@ -5,7 +5,6 @@ import { Nunito_Sans, Kelly_Slab } from 'next/font/google';
 import { Toaster } from 'sonner';
 import ClientOnly from '@/components/ClientOnly';
 import AccessibilityToolbar from '@/components/AccessibilityToolbar';
-import { url } from 'inspector/promises';
 
 const nunito = Nunito_Sans({
   variable: '--font-nunito',
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://grace-couture.vercel.app/images/grace logo icon.png', 
+        url: 'https://grace-couture.vercel.app/images/grace-logo.jpg', 
         height: 630,
         alt: 'Grace Couture - Studio de couture artisanale à Paris',
       },
